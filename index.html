@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dr. Caryn McAllister Gallery — Original Watercolors &amp; Mixed Media</title>
+  <meta name="description" content="The gallery of Dr. Caryn McAllister — original watercolors, acrylics and mixed media, curated in the hope of greater access to healthcare for all.">
+  <meta name="theme-color" content="#f6f4ef">
+  <!-- Social cards. og:image/og:url resolve once deployed; update the domain if the Vercel project name differs. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Dr. Caryn McAllister Gallery">
+  <meta property="og:title" content="Dr. Caryn McAllister Gallery — Original Watercolors &amp; Mixed Media">
+  <meta property="og:description" content="Beauty, color &amp; joy — for all. Original works curated in the hope of greater access to healthcare.">
+  <meta property="og:url" content="https://mcallister-gallery.vercel.app/">
+  <meta property="og:image" content="https://mcallister-gallery.vercel.app/assets/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dr. Caryn McAllister Gallery">
+  <meta name="twitter:description" content="Beauty, color &amp; joy — for all. Original watercolors, acrylics and mixed media.">
+  <meta name="twitter:image" content="https://mcallister-gallery.vercel.app/assets/og.jpg">
+  <link rel="preload" as="image" href="assets/art/the-muse.jpg" fetchpriority="high">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231c1a17'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-style='italic' font-size='30' fill='%23f6f4ef' text-anchor='middle'%3ECM%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="grain" aria-hidden="true"></div>
+  <div id="intro" aria-hidden="true"><span>Dr.&nbsp;Caryn&nbsp;M<span class="small-c">c</span>Allister <em>Gallery</em></span></div>
+  <div id="cursor-view" aria-hidden="true"><span>View</span></div>
+
+  <header id="site-header">
+    <a class="wordmark" href="#top">Dr.&nbsp;Caryn&nbsp;M<span class="small-c">c</span>Allister<span class="gallery-tag">Gallery</span></a>
+    <nav aria-label="Primary">
+      <a href="#works">Works</a>
+      <a href="#gallery">The&nbsp;Gallery</a>
+      <a href="#inquire">Inquire</a>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <p class="eyebrow reveal">The gallery of Dr.&nbsp;Caryn&nbsp;M<span class="small-c">c</span>Allister</p>
+          <h1 class="reveal d1">Beauty, <span class="chip" aria-hidden="true"><img src="assets/art/meadow.jpg" alt=""></span> color<br><em>&amp; joy</em> — for&nbsp;all.</h1>
+          <p class="lede reveal d2">Original watercolors, acrylics and mixed media, curated with a purpose —
+          every piece in the collection is part of Dr.&nbsp;McAllister’s hope for a world with greater
+          access to&nbsp;healthcare.</p>
+          <div class="hero-cta reveal d3">
+            <a class="btn solid" href="#works">View the collection</a>
+            <a class="btn ghost" href="#gallery">About the gallery</a>
+          </div>
+        </div>
+        <div class="hero-art reveal d2">
+          <figure class="hero-main" data-parallax="6">
+            <img src="assets/art/the-muse.jpg" alt="The Muse — mixed media portrait of a woman’s face in soft blues and pinks" fetchpriority="high">
+            <figcaption><em>The Muse</em> · mixed media on canvas</figcaption>
+          </figure>
+          <figure class="hero-float" data-parallax="-14" aria-hidden="true">
+            <img src="assets/art/little-owl.jpg" alt="">
+          </figure>
+        </div>
+      </div>
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker-row">
+          <span class="tk-serif">Dr. Caryn M<span class="small-c">c</span>Allister Gallery</span><span class="tk-dot">✦</span>
+          <span>Original watercolors</span><span class="tk-dot">✦</span>
+          <span class="tk-serif">Acrylic &amp; mixed media</span><span class="tk-dot">✦</span>
+          <span>Connecticut</span><span class="tk-dot">✦</span>
+          <span class="tk-serif">Art in the service of care</span><span class="tk-dot">✦</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FEATURED ============ -->
+    <section id="featured" class="featured">
+      <div class="section-head reveal">
+        <h2><span class="num">01</span> On View</h2>
+        <p class="section-note">Highlights from the current collection — drag to explore.</p>
+      </div>
+      <div class="feat-track" id="feat-track">
+        <!-- cards injected by app.js -->
+      </div>
+    </section>
+
+    <!-- ============ WORKS ============ -->
+    <section id="works" class="works">
+      <div class="section-head reveal">
+        <h2><span class="num">02</span> The Collection</h2>
+        <p class="section-note">Click any piece to view it up close.</p>
+      </div>
+
+      <div class="filters reveal" role="tablist" aria-label="Filter works">
+        <button class="filter is-active" data-filter="all">All</button>
+        <button class="filter" data-filter="florals">Florals</button>
+        <button class="filter" data-filter="landscapes">Land &amp; Sea</button>
+        <button class="filter" data-filter="menagerie">Menagerie</button>
+        <button class="filter" data-filter="abstracts">Abstract</button>
+      </div>
+
+      <div id="grid" class="grid" aria-live="polite"></div>
+    </section>
+
+    <!-- ============ QUOTE ============ -->
+    <section class="quote-band">
+      <blockquote class="reveal">
+        <p>“Bringing beauty, color and joy to all — in the hope of increased access to&nbsp;healthcare.”</p>
+        <cite>— Dr. Caryn McAllister</cite>
+      </blockquote>
+    </section>
+
+    <!-- ============ THE GALLERY ============ -->
+    <section id="gallery" class="artist">
+      <div class="section-head reveal">
+        <h2><span class="num">03</span> The Gallery</h2>
+      </div>
+      <div class="artist-cols">
+        <div class="artist-side reveal">
+          <figure class="artist-fig">
+            <img src="assets/art/garden-reverie.jpg" alt="Garden Reverie — loose abstract florals in rose, teal and citron watercolor" loading="lazy">
+            <figcaption><em>Garden Reverie</em> · watercolor</figcaption>
+          </figure>
+        </div>
+        <div class="artist-body">
+          <p class="reveal">This gallery is the work of <strong>Dr.&nbsp;Caryn McAllister</strong> — a doctor of
+          physical therapy, the founder of a house-call therapy practice in Connecticut, and a lifelong
+          believer that beauty is a form of care. After three decades spent helping people move through
+          the world more freely, she brings that same warmth and attention to the collection gathered&nbsp;here.</p>
+          <p class="reveal">The works move between loose, joyful florals, windswept coastal landscapes,
+          a whimsical menagerie of hares, owls and dancers, and layered abstracts that reward a longer
+          look. The thread through all of it is generosity — color offered freely, to anyone who needs
+          a little more of&nbsp;it.</p>
+          <p class="reveal">Through the nonprofit foundation Dr.&nbsp;McAllister established in 2016, the
+          gallery is woven into a larger mission: expanding access to care and health education for those
+          who need it most. Collecting from the gallery supports that&nbsp;hope.</p>
+          <ul class="artist-facts reveal">
+            <li><span>Founder &amp; Director</span>Dr. Caryn McAllister, PT, DPT</li>
+            <li><span>Collection</span>Watercolor · Ink · Acrylic · Mixed media</li>
+            <li><span>Location</span>Connecticut</li>
+            <li><span>Instagram</span><a href="https://www.instagram.com/drcarynmcallister/" target="_blank" rel="noopener">@drcarynmcallister</a></li>
+            <li><span>Elsewhere</span><a href="https://www.facebook.com/drcarynmcallister/" target="_blank" rel="noopener">Facebook</a>&nbsp;&nbsp;·&nbsp;&nbsp;<a href="https://www.linkedin.com/in/dr-caryn-mcallister-6aaa421a/" target="_blank" rel="noopener">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ INQUIRE ============ -->
+    <section id="inquire" class="inquire">
+      <div class="inquire-inner reveal">
+        <p class="eyebrow">Collect</p>
+        <h2 class="inquire-title">Bring a piece <em>home.</em></h2>
+        <p class="lede">Originals are available, and commissions are warmly welcomed.
+        For sizes, pricing and availability — or to see a painting in person — reach out to
+        Dr.&nbsp;McAllister any time.</p>
+        <div class="hero-cta">
+          <a class="btn solid" href="https://www.instagram.com/drcarynmcallister/" target="_blank" rel="noopener">Message the gallery</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p class="foot-mark">Dr. Caryn M<span class="small-c">c</span>Allister <em>Gallery</em></p>
+    <nav class="foot-social" aria-label="Social media">
+      <a href="https://www.instagram.com/drcarynmcallister/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/drcarynmcallister/" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.linkedin.com/in/dr-caryn-mcallister-6aaa421a/" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+    <p class="foot-note">Original watercolors &amp; mixed media · © 2026 Dr. Caryn McAllister Gallery. All works remain the property of the gallery.</p>
+  </footer>
+
+  <!-- ============ LIGHTBOX ============ -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Artwork viewer" hidden>
+    <button class="lb-close" aria-label="Close">&times;</button>
+    <button class="lb-prev" aria-label="Previous artwork">&larr;</button>
+    <figure class="lb-stage">
+      <img id="lb-img" src="" alt="">
+      <figcaption>
+        <div class="lb-meta">
+          <span id="lb-title"></span>
+          <span id="lb-medium"></span>
+        </div>
+        <div class="lb-foot">
+          <span id="lb-count"></span>
+          <a id="lb-inquire" href="https://www.instagram.com/drcarynmcallister/" target="_blank" rel="noopener">Inquire about this piece →</a>
+        </div>
+      </figcaption>
+    </figure>
+    <button class="lb-next" aria-label="Next artwork">&rarr;</button>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
