@@ -27,7 +27,7 @@
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
 │ INTRO         Blurred-painting curtain wiped away by ink splatters —    │
-│               an SVG track matte, no video, once per session            │
+│               a canvas track matte, no video, once per session          │
 ├─────────────────────────────────────────────────────────────────────────┤
 │ HERO          Serif headline with an inline painting "chip", floating   │
 │               polaroid card, mouse parallax, scrolling ticker           │
@@ -58,10 +58,13 @@
 TYPOGRAPHY    Cormorant Garamond display serif over Inter micro-caps —
               a fine-gallery pairing on paper-white #f6f4ef.
 
-MOTION        Ink-splatter track-matte intro (SMIL-animated SVG mask over
-              a blurred painting — zero video, zero libraries), scroll
-              reveals, floating polaroid, hero parallax, seamless ticker —
-              all honoring prefers-reduced-motion.
+MOTION        Ink-splatter track-matte intro on a 2D canvas: the blur is
+              pre-baked into a JPEG and each frame is one blit + six
+              destination-out fills, so it runs at display refresh rate
+              (60/120 fps). The ink carries through the site: the viewer
+              opens as a blooming ink blot (composited transform), the
+              quote band has torn painted edges, section numbers sit on
+              watercolor daubs. All honoring prefers-reduced-motion.
 
 MOBILE        Not a squeezed desktop: full-width CTAs, swipe rails,
               horizontal filter chips, thumb-pill lightbox arrows.

@@ -51,47 +51,15 @@ img { display: block; max-width: 100%; }
   80% { transform: translate(2%, 2%); }
 }
 
-/* --- intro: ink-splatter track-matte reveal ------------------------ */
+/* --- intro: ink-splatter track matte (canvas) ---------------------- */
 #intro {
   position: fixed; inset: 0;
   width: 100%; height: 100%;
   z-index: 3000;
   display: none;
-  pointer-events: none;
 }
 body.intro-on { overflow: hidden; }
-body.intro-on #intro { display: block; pointer-events: auto; }
-
-.intro-bg image {
-  transform-box: fill-box;
-  transform-origin: 50% 50%;
-  animation: intro-zoom 6s var(--ease) forwards;
-}
-@keyframes intro-zoom {
-  from { transform: scale(1.08); }
-  to   { transform: scale(1); }
-}
-
-.intro-word { opacity: 0; }
-body.intro-on .intro-word { animation: intro-word 0.9s var(--ease) 0.12s forwards; }
-@keyframes intro-word {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: none; }
-}
-.iw-eyebrow { font-family: var(--sans); font-size: 21px; font-weight: 500; letter-spacing: 9px; fill: #5d574c; }
-.iw-name    { font-family: var(--serif); font-size: 96px; font-weight: 600; fill: var(--ink); }
-.iw-tag     { font-family: var(--sans); font-size: 19px; font-weight: 500; letter-spacing: 13px; fill: #5d574c; }
-
-/* portrait screens crop the 16:9 stage — shrink the wordmark to stay fully visible */
-@media (max-aspect-ratio: 9/10) {
-  .intro-word-fit { transform: scale(0.72); transform-origin: 800px 460px; }
-}
-@media (max-aspect-ratio: 3/5) {
-  .intro-word-fit { transform: scale(0.46); transform-origin: 800px 460px; }
-}
-
-/* the wipe: SMIL-scaled ink splats grow as holes in the curtain's mask
-   (SMIL is used because CSS animations inside <mask> repaint unreliably) */
+body.intro-on #intro { display: block; }
 
 /* while the intro plays, hold the page's reveals so it rises as the ink clears */
 body.intro-hold .reveal { opacity: 0; transform: translateY(26px); }
@@ -316,6 +284,16 @@ section { position: relative; }
   color: var(--muted);
   vertical-align: 1.6em;
   margin-right: 0.9em;
+  position: relative;
+}
+.num::before {
+  content: "";
+  position: absolute;
+  left: -2em; top: -2.1em;
+  width: 6.2em; height: 4.6em;
+  background: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 60%22%3E%3Cpath fill=%22%23AAB27E%22 d=%22M88.9 33.0C87.6 37.8 76.6 39.4 72.4 42.5C68.1 45.7 67.0 51.3 63.4 51.8C59.8 52.4 54.7 47.8 50.8 45.7C46.8 43.6 41.7 42.8 39.6 39.2C37.5 35.5 36.7 27.6 38.4 23.7C40.0 19.8 45.1 18.4 49.5 15.8C53.9 13.3 59.8 8.9 64.9 8.5C70.0 8.1 76.1 9.1 80.1 13.2C84.1 17.3 90.2 28.1 88.9 33.0ZM64.0 -0.6m-1.2 0a1.2 1.2 0 1 0 2.3 0a1.2 1.2 0 1 0 -2.3 0ZM39.1 52.5m-1.4 0a1.4 1.4 0 1 0 2.9 0a1.4 1.4 0 1 0 -2.9 0Z%22/%3E%3C/svg%3E") center / contain no-repeat;
+  opacity: 0.5;
+  z-index: -1;
 }
 .section-note { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.04em; }
 
@@ -487,6 +465,9 @@ section { position: relative; }
   text-align: center;
   position: relative;
   overflow: hidden;
+  /* rough painted edges — the dark band reads as a brush stroke laid on the paper */
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1600 400%22 preserveAspectRatio=%22none%22%3E%3Cpath fill=%22%23fff%22 d=%22M0 6.9 L18 9.9 L36 2.7 L54 5.8 L72 5.7 L90 2.9 L108 5.4 L126 8.5 L144 0.6 L162 7.3 L180 4.1 L198 7.2 L216 2.0 L234 5.1 L252 11.2 L270 5.5 L288 14.0 L306 8.0 L324 10.7 L342 9.2 L360 7.1 L378 8.5 L396 5.2 L413 4.1 L431 8.5 L449 13.7 L467 16.8 L485 10.8 L503 14.5 L521 12.9 L539 15.9 L557 15.2 L575 9.5 L593 14.9 L611 16.2 L629 20.0 L647 19.4 L665 15.3 L683 17.7 L701 8.8 L719 11.0 L737 12.5 L755 14.6 L773 9.7 L791 12.6 L809 4.8 L827 5.8 L845 9.3 L863 6.7 L881 14.2 L899 6.0 L917 6.8 L935 2.2 L953 6.6 L971 4.8 L989 1.9 L1007 5.5 L1025 3.7 L1043 6.0 L1061 8.3 L1079 10.8 L1097 10.4 L1115 6.0 L1133 7.2 L1151 10.5 L1169 9.7 L1187 8.6 L1204 3.5 L1222 3.2 L1240 3.5 L1258 6.2 L1276 6.0 L1294 8.4 L1312 4.8 L1330 5.9 L1348 7.1 L1366 3.3 L1384 6.0 L1402 2.1 L1420 5.4 L1438 5.9 L1456 2.2 L1474 5.0 L1492 8.2 L1510 1.8 L1528 3.9 L1546 3.8 L1564 0.5 L1582 5.8 L1600 6.9 L1600 383.0 L1582 387.4 L1564 389.6 L1546 395.6 L1528 387.6 L1510 391.9 L1492 394.9 L1474 398.0 L1456 394.9 L1438 397.7 L1420 393.6 L1402 390.6 L1384 397.1 L1366 394.9 L1348 397.8 L1330 395.0 L1312 392.7 L1294 393.3 L1276 393.5 L1258 398.2 L1240 395.8 L1222 391.2 L1204 389.7 L1187 398.2 L1169 391.9 L1151 392.8 L1133 388.7 L1115 388.6 L1097 390.2 L1079 385.1 L1061 379.8 L1043 380.4 L1025 375.6 L1007 372.9 L989 377.3 L971 376.3 L953 378.1 L935 373.0 L917 378.0 L899 378.5 L881 381.8 L863 385.8 L845 383.2 L827 386.8 L809 386.0 L791 387.2 L773 392.4 L755 388.7 L737 389.1 L719 390.9 L701 385.0 L683 390.0 L665 387.0 L647 385.5 L629 381.7 L611 376.6 L593 379.3 L575 384.2 L557 383.3 L539 380.1 L521 385.4 L503 378.8 L485 375.8 L467 380.5 L449 381.9 L431 377.3 L413 375.9 L396 378.1 L378 374.7 L360 378.0 L342 375.4 L324 377.1 L306 387.0 L288 381.8 L270 389.6 L252 382.0 L234 384.7 L216 387.0 L198 390.2 L180 386.8 L162 389.5 L144 387.9 L126 386.2 L108 387.5 L90 383.2 L72 387.4 L54 389.3 L36 392.6 L18 387.3 L0 386.0 Z%22/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1600 400%22 preserveAspectRatio=%22none%22%3E%3Cpath fill=%22%23fff%22 d=%22M0 6.9 L18 9.9 L36 2.7 L54 5.8 L72 5.7 L90 2.9 L108 5.4 L126 8.5 L144 0.6 L162 7.3 L180 4.1 L198 7.2 L216 2.0 L234 5.1 L252 11.2 L270 5.5 L288 14.0 L306 8.0 L324 10.7 L342 9.2 L360 7.1 L378 8.5 L396 5.2 L413 4.1 L431 8.5 L449 13.7 L467 16.8 L485 10.8 L503 14.5 L521 12.9 L539 15.9 L557 15.2 L575 9.5 L593 14.9 L611 16.2 L629 20.0 L647 19.4 L665 15.3 L683 17.7 L701 8.8 L719 11.0 L737 12.5 L755 14.6 L773 9.7 L791 12.6 L809 4.8 L827 5.8 L845 9.3 L863 6.7 L881 14.2 L899 6.0 L917 6.8 L935 2.2 L953 6.6 L971 4.8 L989 1.9 L1007 5.5 L1025 3.7 L1043 6.0 L1061 8.3 L1079 10.8 L1097 10.4 L1115 6.0 L1133 7.2 L1151 10.5 L1169 9.7 L1187 8.6 L1204 3.5 L1222 3.2 L1240 3.5 L1258 6.2 L1276 6.0 L1294 8.4 L1312 4.8 L1330 5.9 L1348 7.1 L1366 3.3 L1384 6.0 L1402 2.1 L1420 5.4 L1438 5.9 L1456 2.2 L1474 5.0 L1492 8.2 L1510 1.8 L1528 3.9 L1546 3.8 L1564 0.5 L1582 5.8 L1600 6.9 L1600 383.0 L1582 387.4 L1564 389.6 L1546 395.6 L1528 387.6 L1510 391.9 L1492 394.9 L1474 398.0 L1456 394.9 L1438 397.7 L1420 393.6 L1402 390.6 L1384 397.1 L1366 394.9 L1348 397.8 L1330 395.0 L1312 392.7 L1294 393.3 L1276 393.5 L1258 398.2 L1240 395.8 L1222 391.2 L1204 389.7 L1187 398.2 L1169 391.9 L1151 392.8 L1133 388.7 L1115 388.6 L1097 390.2 L1079 385.1 L1061 379.8 L1043 380.4 L1025 375.6 L1007 372.9 L989 377.3 L971 376.3 L953 378.1 L935 373.0 L917 378.0 L899 378.5 L881 381.8 L863 385.8 L845 383.2 L827 386.8 L809 386.0 L791 387.2 L773 392.4 L755 388.7 L737 389.1 L719 390.9 L701 385.0 L683 390.0 L665 387.0 L647 385.5 L629 381.7 L611 376.6 L593 379.3 L575 384.2 L557 383.3 L539 380.1 L521 385.4 L503 378.8 L485 375.8 L467 380.5 L449 381.9 L431 377.3 L413 375.9 L396 378.1 L378 374.7 L360 378.0 L342 375.4 L324 377.1 L306 387.0 L288 381.8 L270 389.6 L252 382.0 L234 384.7 L216 387.0 L198 390.2 L180 386.8 L162 389.5 L144 387.9 L126 386.2 L108 387.5 L90 383.2 L72 387.4 L54 389.3 L36 392.6 L18 387.3 L0 386.0 Z%22/%3E%3C/svg%3E") center / 100% 100% no-repeat;
 }
 .quote-band::before {
   content: "";
@@ -604,14 +585,31 @@ footer {
 .lightbox[hidden] { display: none; }
 .lightbox {
   position: fixed; inset: 0; z-index: 500;
-  background: rgba(16, 15, 13, 0.94);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  background: transparent;
   display: flex; align-items: center; justify-content: center;
-  opacity: 0;
-  transition: opacity 0.35s ease;
+  overflow: hidden;
 }
-.lightbox.open { opacity: 1; }
+/* the viewer opens as an ink blot blooming across the page (transform only — composited) */
+.lb-ink {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 100px; height: 100px;
+  margin: -50px 0 0 -50px;
+  background: rgba(16, 15, 13, 0.97);
+  clip-path: path("M71.9 49.1C71.6 52.6 69.1 58.0 67.2 61.9C65.2 65.8 63.0 70.0 60.0 72.4C57.0 74.8 53.1 76.6 49.0 76.3C45.0 76.1 38.7 74.0 35.6 70.9C32.5 67.9 32.9 62.8 30.4 58.0C28.0 53.2 20.2 46.0 20.7 42.0C21.3 38.0 29.3 38.1 33.6 34.2C37.9 30.3 41.9 19.5 46.4 18.4C51.0 17.2 57.1 23.7 60.8 27.5C64.5 31.3 66.6 37.3 68.5 40.9C70.3 44.5 72.1 45.6 71.9 49.1ZM41.2 84.6m-1.5 0a1.5 1.5 0 1 0 2.9 0a1.5 1.5 0 1 0 -2.9 0ZM33.8 92.0m-1.6 0a1.6 1.6 0 1 0 3.1 0a1.6 1.6 0 1 0 -3.1 0ZM12.9 29.1m-1.9 0a1.9 1.9 0 1 0 3.8 0a1.9 1.9 0 1 0 -3.8 0ZM16.9 39.8m-1.4 0a1.4 1.4 0 1 0 2.7 0a1.4 1.4 0 1 0 -2.7 0Z");
+  transform: scale(0);
+  transition: transform 0.55s cubic-bezier(0.3, 0.6, 0.3, 1);
+  will-change: transform;
+}
+.lightbox.open .lb-ink { transform: scale(130); }
+.lightbox .lb-stage,
+.lightbox .lb-close, .lightbox .lb-prev, .lightbox .lb-next {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.lightbox.open .lb-stage { opacity: 1; transition-delay: 0.32s; }
+.lightbox.open .lb-close, .lightbox.open .lb-prev, .lightbox.open .lb-next { opacity: 0.65; transition-delay: 0.4s; }
+.lightbox.open .lb-close:hover, .lightbox.open .lb-prev:hover, .lightbox.open .lb-next:hover { opacity: 1; transition-delay: 0s; }
 .lb-stage {
   max-width: min(88vw, 1100px);
   max-height: 88vh;

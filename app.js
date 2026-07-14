@@ -39,20 +39,149 @@ const detailOf = (w) => [w.medium, w.size].filter(Boolean).join(" · ");
 const tickerRow = document.querySelector(".ticker-row");
 tickerRow.innerHTML += tickerRow.innerHTML;
 
-/* ---------- intro: ink-splatter track-matte reveal ---------- */
+/* ---------- intro: ink-splatter track matte (canvas) ----------
+   Stage is 1600x900 units mapped cover-style onto the viewport.
+   Each frame = one image blit + a wash + the wordmark + up to six
+   destination-out path fills. No runtime blur, no SVG mask — the
+   blurred curtain is pre-baked into assets/intro-blur.jpg, so the
+   whole thing composites on the GPU at display refresh rate. */
+const INTRO_SPLATS = [
+  { cx: 320,  cy: 210, d: "M409 -15C394 60 366 126 330 186C295 246 245 308 197 344C150 380 97 415 45 403C-8 391 -26 282 -117 270C-208 257 -445 373 -500 328C-556 283 -456 113 -451 2C-445 -109 -514 -286 -467 -336C-419 -386 -243 -288 -165 -296C-87 -305 -52 -398 2 -385C56 -371 89 -238 160 -217C230 -197 384 -297 426 -263C467 -229 425 -89 409 -15ZM-398 611m-26 0a26 26 0 1 0 51 0a26 26 0 1 0 -51 0ZM185 -746m-50 0a50 50 0 1 0 99 0a50 50 0 1 0 -99 0ZM427 430m-38 0a38 38 0 1 0 76 0a38 38 0 1 0 -76 0ZM-789 -41m-22 0a22 22 0 1 0 45 0a22 22 0 1 0 -45 0ZM443 -460m-42 0a42 42 0 1 0 84 0a42 42 0 1 0 -84 0Z" },
+  { cx: 800,  cy: 120, d: "M325 -11C351 65 436 221 422 282C407 342 313 356 238 352C163 348 43 268 -30 258C-103 248 -135 292 -199 293C-263 293 -366 317 -413 261C-460 206 -485 32 -481 -41C-476 -113 -443 -146 -384 -174C-325 -202 -190 -197 -126 -209C-61 -221 -54 -210 5 -246C64 -281 185 -433 229 -421C272 -410 250 -244 266 -175C282 -107 299 -87 325 -11ZM415 -564m-44 0a44 44 0 1 0 89 0a44 44 0 1 0 -89 0ZM-649 233m-26 0a26 26 0 1 0 52 0a26 26 0 1 0 -52 0ZM-251 -488m-31 0a31 31 0 1 0 62 0a31 31 0 1 0 -62 0ZM700 122m-32 0a32 32 0 1 0 64 0a32 32 0 1 0 -64 0Z" },
+  { cx: 810,  cy: 560, d: "M731 -11C728 62 483 93 404 177C326 260 331 429 260 488C189 547 82 519 -22 532C-127 546 -324 628 -368 569C-411 510 -263 270 -281 180C-300 90 -423 134 -476 29C-529 -75 -648 -384 -599 -448C-551 -513 -291 -369 -185 -357C-79 -346 -40 -337 38 -379C117 -421 220 -628 284 -609C348 -590 347 -364 421 -265C496 -165 733 -85 731 -11ZM-883 325m-41 0a41 41 0 1 0 82 0a41 41 0 1 0 -82 0ZM-555 596m-30 0a30 30 0 1 0 60 0a30 30 0 1 0 -60 0ZM-68 -997m-32 0a32 32 0 1 0 65 0a32 32 0 1 0 -65 0ZM127 -880m-43 0a43 43 0 1 0 85 0a43 43 0 1 0 -85 0Z" },
+  { cx: 1280, cy: 240, d: "M463 -18C437 63 425 94 402 185C380 275 404 456 328 524C252 592 60 591 -54 592C-168 592 -297 581 -359 527C-420 472 -401 352 -424 265C-447 177 -475 98 -499 2C-523 -94 -620 -255 -567 -309C-515 -362 -267 -270 -182 -319C-97 -368 -116 -601 -56 -604C4 -606 77 -384 180 -334C283 -284 514 -358 561 -306C608 -253 490 -100 463 -18ZM-855 315m-40 0a40 40 0 1 0 81 0a40 40 0 1 0 -81 0ZM220 -620m-31 0a31 31 0 1 0 61 0a31 31 0 1 0 -61 0ZM303 -728m-49 0a49 49 0 1 0 97 0a49 49 0 1 0 -97 0Z" },
+  { cx: 240,  cy: 760, d: "M503 8C511 55 325 65 281 134C236 203 275 363 237 420C199 477 127 490 52 475C-23 459 -155 372 -213 329C-270 286 -268 278 -293 217C-318 157 -340 48 -365 -33C-390 -115 -457 -213 -440 -270C-424 -328 -332 -332 -264 -380C-196 -428 -114 -558 -31 -560C53 -562 191 -460 235 -391C279 -323 189 -214 234 -147C279 -81 495 -39 503 8ZM-575 347m-29 0a29 29 0 1 0 58 0a29 29 0 1 0 -58 0ZM395 -586m-24 0a24 24 0 1 0 48 0a24 24 0 1 0 -48 0ZM600 -111m-34 0a34 34 0 1 0 68 0a34 34 0 1 0 -68 0Z" },
+  { cx: 1420, cy: 720, d: "M573 39C570 127 491 195 418 233C344 270 207 210 131 264C55 318 9 557 -39 558C-86 559 -84 312 -155 271C-227 230 -450 353 -470 311C-490 270 -289 104 -277 22C-266 -60 -415 -125 -400 -182C-385 -239 -257 -263 -189 -321C-121 -378 -87 -495 6 -527C98 -558 295 -546 365 -507C436 -469 396 -384 430 -293C465 -202 575 -48 573 39ZM103 -747m-33 0a33 33 0 1 0 66 0a33 33 0 1 0 -66 0ZM-110 -627m-38 0a38 38 0 1 0 76 0a38 38 0 1 0 -76 0ZM-622 -395m-45 0a45 45 0 1 0 91 0a45 45 0 1 0 -91 0Z" },
+];
+const WIPE_START = 1000, WIPE_STAGGER = 115, WIPE_DUR = 1200;
+const INTRO_END = WIPE_START + (INTRO_SPLATS.length - 1) * WIPE_STAGGER + WIPE_DUR + 80;
+
 const playIntro = !FLAT
   && !sessionStorage.getItem("introShown")
   && !matchMedia("(prefers-reduced-motion: reduce)").matches;
+
 if (playIntro) {
   sessionStorage.setItem("introShown", "1");
   document.body.classList.add("intro-on", "intro-hold");
-  setTimeout(() => {                                                     // flick the ink
-    document.querySelectorAll("#intro animateTransform").forEach((a, i) => {
-      setTimeout(() => a.beginElement(), i * 115);
+
+  const canvas = document.getElementById("intro");
+  const ctx = canvas.getContext("2d");
+  const dpr = Math.min(devicePixelRatio || 1, 2);
+  const splats = INTRO_SPLATS.map((s) => ({ ...s, path: new Path2D(s.d) }));
+  const bg = new Image();
+  bg.src = "assets/intro-blur.jpg";
+
+  let W, H, S, ox, oy;
+  const resize = () => {
+    W = innerWidth; H = innerHeight;
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    S = Math.max(W / 1600, H / 900);
+    ox = (W - 1600 * S) / 2; oy = (H - 900 * S) / 2;
+  };
+  resize();
+  addEventListener("resize", resize);
+
+  const easeOut = (p) => 1 - Math.pow(1 - Math.min(Math.max(p, 0), 1), 3);
+  const INK = "#1c1a17", SOFT = "#5d574c";
+
+  const drawWordmark = (t) => {
+    const p = easeOut((t - 120) / 900);
+    if (p <= 0) return;
+    ctx.globalAlpha = p;
+    const baseY = oy + 460 * S + (1 - p) * 16 * S;
+
+    const nameFont = (px) => `600 ${px}px "Cormorant Garamond", Georgia, serif`;
+    ctx.font = nameFont(96 * S);
+    const w1 = ctx.measureText("Dr. Caryn M").width;
+    const w3 = ctx.measureText("Allister").width;
+    ctx.font = nameFont(96 * 0.64 * S);
+    const wc = ctx.measureText("c").width;
+    const total = w1 + wc + w3;
+    const fit = Math.min(1, (W * 0.88) / total);
+
+    ctx.save();
+    ctx.translate(W / 2, baseY);
+    ctx.scale(fit, fit);
+    ctx.textBaseline = "alphabetic";
+
+    ctx.fillStyle = SOFT;
+    ctx.font = `500 ${21 * S}px Inter, sans-serif`;
+    try { ctx.letterSpacing = `${9 * S}px`; } catch (_) { /* older engines */ }
+    ctx.textAlign = "center";
+    ctx.fillText("THE GALLERY OF", 0, -74 * S);
+
+    try { ctx.letterSpacing = "0px"; } catch (_) {}
+    ctx.fillStyle = INK;
+    ctx.textAlign = "left";
+    let x = -total / 2;
+    ctx.font = nameFont(96 * S);
+    ctx.fillText("Dr. Caryn M", x, 20 * S); x += w1;
+    ctx.font = nameFont(96 * 0.64 * S);
+    ctx.fillText("c", x, -6 * S); x += wc;
+    ctx.font = nameFont(96 * S);
+    ctx.fillText("Allister", x, 20 * S);
+
+    ctx.strokeStyle = "rgba(28,26,23,0.35)";
+    ctx.lineWidth = Math.max(1, S);
+    ctx.beginPath();
+    ctx.moveTo(-160 * S, 64 * S); ctx.lineTo(160 * S, 64 * S);
+    ctx.stroke();
+
+    ctx.fillStyle = SOFT;
+    ctx.font = `500 ${19 * S}px Inter, sans-serif`;
+    try { ctx.letterSpacing = `${13 * S}px`; } catch (_) {}
+    ctx.textAlign = "center";
+    ctx.fillText("GALLERY", 6 * S, 106 * S);
+    try { ctx.letterSpacing = "0px"; } catch (_) {}
+    ctx.restore();
+    ctx.globalAlpha = 1;
+  };
+
+  const qaOffset = +(new URLSearchParams(location.search).get("it") || 0); // QA: render the timeline at +N ms
+  let t0 = null, holdReleased = false;
+  const frame = (now) => {
+    if (t0 === null) t0 = now - qaOffset;
+    const t = now - t0;
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.globalCompositeOperation = "source-over";
+
+    // curtain: pre-blurred painting with a slow settle-zoom, paper wash, wordmark
+    if (bg.complete && bg.naturalWidth) {
+      const z = 1.08 - 0.08 * Math.min(1, t / 6000);
+      const bw = 1600 * S * z, bh = 900 * S * z;
+      ctx.drawImage(bg, (W - bw) / 2, (H - bh) / 2, bw, bh);
+      ctx.fillStyle = "rgba(246,244,239,0.45)";
+    } else {
+      ctx.fillStyle = "#f6f4ef";
+    }
+    ctx.fillRect(0, 0, W, H);
+    drawWordmark(t);
+
+    // the wipe: splats erase the curtain, revealing the live page beneath
+    ctx.globalCompositeOperation = "destination-out";
+    splats.forEach((s, i) => {
+      const p = easeOut((t - WIPE_START - i * WIPE_STAGGER) / WIPE_DUR);
+      if (p <= 0) return;
+      ctx.save();
+      ctx.translate(ox + s.cx * S, oy + s.cy * S);
+      const k = p * 1.4 * S;
+      ctx.scale(k, k);
+      ctx.fill(s.path);
+      ctx.restore();
     });
-  }, 1000);
-  setTimeout(() => document.body.classList.remove("intro-hold"), 1300);  // site rises through the splats
-  setTimeout(() => document.body.classList.remove("intro-on"), 2750);
+
+    if (!holdReleased && t > 1300) {
+      holdReleased = true;
+      document.body.classList.remove("intro-hold");   // site rises through the splats
+    }
+    if (t < INTRO_END) requestAnimationFrame(frame);
+    else {
+      document.body.classList.remove("intro-on");
+      removeEventListener("resize", resize);
+    }
+  };
+  requestAnimationFrame(frame);
 }
 
 /* ---------- build works grid ---------- */
@@ -233,7 +362,7 @@ function renderLb() {
 function closeLb() {
   lb.classList.remove("open");
   document.body.style.overflow = "";
-  setTimeout(() => { lb.hidden = true; }, 350);
+  setTimeout(() => { lb.hidden = true; }, 580);   // let the ink blot shrink back
 }
 const step = (d) => { current = (current + d + visible.length) % visible.length; renderLb(); };
 
@@ -250,13 +379,19 @@ grid.addEventListener("keydown", (e) => {
 lb.querySelector(".lb-close").addEventListener("click", closeLb);
 lb.querySelector(".lb-prev").addEventListener("click", () => step(-1));
 lb.querySelector(".lb-next").addEventListener("click", () => step(1));
-lb.addEventListener("click", (e) => { if (e.target === lb) closeLb(); });
+lb.addEventListener("click", (e) => {
+  if (e.target === lb || e.target.classList.contains("lb-ink")) closeLb();
+});
 addEventListener("keydown", (e) => {
   if (lb.hidden) return;
   if (e.key === "Escape") closeLb();
   if (e.key === "ArrowLeft") step(-1);
   if (e.key === "ArrowRight") step(1);
 });
+
+/* QA: ?lb=N opens the viewer on work N */
+const lbQA = new URLSearchParams(location.search).get("lb");
+if (lbQA !== null) setTimeout(() => openLb(+lbQA || 0), 400);
 
 /* swipe */
 let touchX = null;
