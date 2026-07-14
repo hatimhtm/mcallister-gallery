@@ -57,12 +57,12 @@ img { display: block; max-width: 100%; }
   width: 100%; height: 100%;
   z-index: 3000;
   display: none;
+  opacity: 1;
+  transition: opacity 0.4s ease;
 }
 body.intro-on { overflow: hidden; }
 body.intro-on #intro { display: block; }
-
-/* while the intro plays, hold the page's reveals so it rises as the ink clears */
-body.intro-hold .reveal { opacity: 0; transform: translateY(26px); }
+body.intro-fade #intro { opacity: 0; }
 
 /* --- header ------------------------------------------------------- */
 #site-header {
@@ -584,7 +584,7 @@ footer {
 /* --- lightbox ----------------------------------------------------- */
 .lightbox[hidden] { display: none; }
 .lightbox {
-  position: fixed; inset: 0; z-index: 500;
+  position: fixed; inset: 0; z-index: 2400;   /* above the grain overlay (2000) */
   background: transparent;
   display: flex; align-items: center; justify-content: center;
   overflow: hidden;
@@ -611,6 +611,8 @@ footer {
 .lightbox.open .lb-close, .lightbox.open .lb-prev, .lightbox.open .lb-next { opacity: 0.65; transition-delay: 0.4s; }
 .lightbox.open .lb-close:hover, .lightbox.open .lb-prev:hover, .lightbox.open .lb-next:hover { opacity: 1; transition-delay: 0s; }
 .lb-stage {
+  position: relative;
+  z-index: 1;               /* above the ink blot, which is a positioned sibling */
   max-width: min(88vw, 1100px);
   max-height: 88vh;
   display: flex; flex-direction: column;

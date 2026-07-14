@@ -62,7 +62,7 @@ const playIntro = !FLAT
 
 if (playIntro) {
   sessionStorage.setItem("introShown", "1");
-  document.body.classList.add("intro-on", "intro-hold");
+  document.body.classList.add("intro-on");
 
   const canvas = document.getElementById("intro");
   const ctx = canvas.getContext("2d");
@@ -138,7 +138,7 @@ if (playIntro) {
   };
 
   const qaOffset = +(new URLSearchParams(location.search).get("it") || 0); // QA: render the timeline at +N ms
-  let t0 = null, holdReleased = false;
+  let t0 = null;
   const frame = (now) => {
     if (t0 === null) t0 = now - qaOffset;
     const t = now - t0;
@@ -171,14 +171,14 @@ if (playIntro) {
       ctx.restore();
     });
 
-    if (!holdReleased && t > 1300) {
-      holdReleased = true;
-      document.body.classList.remove("intro-hold");   // site rises through the splats
-    }
     if (t < INTRO_END) requestAnimationFrame(frame);
     else {
-      document.body.classList.remove("intro-on");
-      removeEventListener("resize", resize);
+      // soft landing: fade out whatever slivers of curtain remain, then unmount
+      document.body.classList.add("intro-fade");
+      setTimeout(() => {
+        document.body.classList.remove("intro-on", "intro-fade");
+        removeEventListener("resize", resize);
+      }, 420);
     }
   };
   requestAnimationFrame(frame);
