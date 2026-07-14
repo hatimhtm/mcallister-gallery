@@ -3,28 +3,28 @@
 /* To add a size for any piece, fill in the `size` field, e.g. size: "11 × 14 in".
    It will appear automatically in the grid captions and the viewer. */
 const WORKS = [
-  { slug: "meadow",         title: "Meadow Song",        medium: "Acrylic on canvas",     size: "", cat: "landscapes", wash: "#2c827f" },
-  { slug: "daisies",        title: "Daisies in the Wind", medium: "Watercolor & ink",     size: "", cat: "florals",    wash: "#798454" },
-  { slug: "boats",          title: "Resting Boats",      medium: "Ink & watercolor wash", size: "", cat: "landscapes", wash: "#7f7f72" },
-  { slug: "trillium",       title: "Trillium",           medium: "Watercolor & ink",      size: "", cat: "florals",    wash: "#88667b" },
-  { slug: "prima",          title: "Prima",              medium: "Mixed media on canvas", size: "", cat: "menagerie",  wash: "#9ea1a6" },
-  { slug: "shoreline",      title: "Shoreline",          medium: "Watercolor",            size: "", cat: "landscapes", wash: "#8a835b" },
-  { slug: "muscari",        title: "Grape Hyacinths",    medium: "Watercolor & ink",      size: "", cat: "florals",    wash: "#839a75" },
-  { slug: "mirror-lake",    title: "Mirror Lake",        medium: "Acrylic on board",      size: "", cat: "abstracts",  wash: "#6c8a8f" },
-  { slug: "young-hare",     title: "Young Hare",         medium: "Watercolor & ink",      size: "", cat: "menagerie",  wash: "#99938c" },
-  { slug: "daffodil",       title: "Daffodil at Dawn",   medium: "Watercolor & ink",      size: "", cat: "florals",    wash: "#9c8a51" },
-  { slug: "palms-i",        title: "Where the Palms Lean", medium: "Watercolor",          size: "", cat: "landscapes", wash: "#7a8235" },
-  { slug: "marigold",       title: "Marigold Days",      medium: "Acrylic on canvas",     size: "", cat: "abstracts",  wash: "#b46f30" },
-  { slug: "little-owl",     title: "Little Owl",         medium: "Watercolor & ink",      size: "", cat: "menagerie",  wash: "#7e7d70" },
-  { slug: "garden-reverie", title: "Garden Reverie",     medium: "Watercolor",            size: "", cat: "florals",    wash: "#b3a690" },
-  { slug: "autumn-fire",    title: "Autumn Fire",        medium: "Mixed media",           size: "", cat: "landscapes", wash: "#968d86" },
-  { slug: "peach-blossom",  title: "Peach Blossom",      medium: "Watercolor & ink",      size: "", cat: "florals",    wash: "#9c7d62" },
-  { slug: "sea-change",     title: "Sea Change",         medium: "Mixed media",           size: "", cat: "abstracts",  wash: "#888160" },
-  { slug: "hare-heart",     title: "Hare with a Heart",  medium: "Watercolor & ink",      size: "", cat: "menagerie",  wash: "#92a172" },
-  { slug: "palms-ii",       title: "Trade Winds",        medium: "Watercolor",            size: "", cat: "landscapes", wash: "#7d773d" },
-  { slug: "solitude",       title: "Solitude",           medium: "Mixed media",           size: "", cat: "abstracts",  wash: "#a19b83" },
-  { slug: "birdbath",       title: "The Birdbath",       medium: "Watercolor & ink",      size: "", cat: "landscapes", wash: "#678e90" },
-  { slug: "the-muse",       title: "The Muse",           medium: "Mixed media on canvas", size: "", cat: "abstracts",  wash: "#868585" },
+  { slug: "meadow",         title: "Meadow Song",        medium: "Acrylic on canvas",     size: "", w: 1600, h: 1200, cat: "landscapes", wash: "#2c827f" },
+  { slug: "daisies",        title: "Daisies in the Wind", medium: "Watercolor & ink",     size: "", w: 1147, h: 1560, cat: "florals",    wash: "#798454" },
+  { slug: "boats",          title: "Resting Boats",      medium: "Ink & watercolor wash", size: "", w: 1218, h: 1600, cat: "landscapes", wash: "#7f7f72" },
+  { slug: "trillium",       title: "Trillium",           medium: "Watercolor & ink",      size: "", w: 708, h: 1170, cat: "florals",    wash: "#88667b" },
+  { slug: "prima",          title: "Prima",              medium: "Mixed media on canvas", size: "", w: 760, h: 908, cat: "menagerie",  wash: "#9ea1a6" },
+  { slug: "shoreline",      title: "Shoreline",          medium: "Watercolor",            size: "", w: 1153, h: 1529, cat: "landscapes", wash: "#8a835b" },
+  { slug: "muscari",        title: "Grape Hyacinths",    medium: "Watercolor & ink",      size: "", w: 1170, h: 1560, cat: "florals",    wash: "#839a75" },
+  { slug: "mirror-lake",    title: "Mirror Lake",        medium: "Acrylic on board",      size: "", w: 1221, h: 1600, cat: "abstracts",  wash: "#6c8a8f" },
+  { slug: "young-hare",     title: "Young Hare",         medium: "Watercolor & ink",      size: "", w: 877, h: 1189, cat: "menagerie",  wash: "#99938c" },
+  { slug: "daffodil",       title: "Golden Bloom"   ,   medium: "Watercolor & ink",      size: "", w: 1277, h: 983, cat: "florals",    wash: "#9c8a51" },
+  { slug: "palms-i",        title: "Windswept Palms I"   , medium: "Watercolor",          size: "", w: 1170, h: 1560, cat: "landscapes", wash: "#7a8235" },
+  { slug: "marigold",       title: "Orange Blossom Days", medium: "Acrylic on canvas",    size: "", w: 1017, h: 1030, cat: "florals",  wash: "#b46f30" },
+  { slug: "little-owl",     title: "Little Owl",         medium: "Watercolor & ink",      size: "", w: 606, h: 913, cat: "menagerie",  wash: "#7e7d70" },
+  { slug: "garden-reverie", title: "Garden Reverie",     medium: "Watercolor",            size: "", w: 1219, h: 1600, cat: "florals",    wash: "#b3a690" },
+  { slug: "autumn-fire",    title: "Autumn Fire",        medium: "Mixed media",           size: "", w: 1219, h: 1600, cat: "landscapes", wash: "#968d86" },
+  { slug: "peach-blossom",  title: "Blush Bloom"  ,      medium: "Watercolor & ink",      size: "", w: 1257, h: 1253, cat: "florals",    wash: "#9c7d62" },
+  { slug: "sea-change",     title: "Sea Change",         medium: "Mixed media",           size: "", w: 1290, h: 1249, cat: "abstracts",  wash: "#888160" },
+  { slug: "hare-heart",     title: "Hare with a Heart",  medium: "Watercolor & ink",      size: "", w: 1170, h: 1560, cat: "menagerie",  wash: "#92a172" },
+  { slug: "palms-ii",       title: "Windswept Palms II",        medium: "Watercolor",            size: "", w: 1170, h: 1560, cat: "landscapes", wash: "#7d773d" },
+  { slug: "solitude",       title: "Solitude",           medium: "Mixed media",           size: "", w: 896, h: 1137, cat: "abstracts",  wash: "#a19b83" },
+  { slug: "birdbath",       title: "The Birdbath",       medium: "Watercolor & ink",      size: "", w: 1222, h: 1600, cat: "landscapes", wash: "#678e90" },
+  { slug: "the-muse",       title: "The Muse",           medium: "Mixed media on canvas", size: "", w: 900, h: 913, cat: "abstracts",  wash: "#868585" },
 ];
 
 /* Slugs featured in the "On View" showcase, in order */
@@ -32,6 +32,14 @@ const FEATURED = ["meadow", "the-muse", "autumn-fire", "prima", "mirror-lake", "
 
 const FLAT = new URLSearchParams(location.search).has("flat"); // visual-QA mode: no animations
 if (FLAT) document.documentElement.style.scrollBehavior = "auto";
+
+const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* sessionStorage throws when site data is blocked — never let that kill the page */
+const store = {
+  get(k) { try { return sessionStorage.getItem(k); } catch (_) { return null; } },
+  set(k, v) { try { sessionStorage.setItem(k, v); } catch (_) { /* blocked */ } },
+};
 
 const detailOf = (w) => [w.medium, w.size].filter(Boolean).join(" · ");
 
@@ -56,12 +64,10 @@ const INTRO_SPLATS = [
 const WIPE_START = 1000, WIPE_STAGGER = 115, WIPE_DUR = 1200;
 const INTRO_END = WIPE_START + (INTRO_SPLATS.length - 1) * WIPE_STAGGER + WIPE_DUR + 80;
 
-const playIntro = !FLAT
-  && !sessionStorage.getItem("introShown")
-  && !matchMedia("(prefers-reduced-motion: reduce)").matches;
+const playIntro = !FLAT && !REDUCED && !store.get("introShown");
 
 if (playIntro) {
-  sessionStorage.setItem("introShown", "1");
+  store.set("introShown", "1");
   document.body.classList.add("intro-on");
 
   const canvas = document.getElementById("intro");
@@ -83,21 +89,29 @@ if (playIntro) {
 
   const easeOut = (p) => 1 - Math.pow(1 - Math.min(Math.max(p, 0), 1), 3);
   const INK = "#1c1a17", SOFT = "#5d574c";
+  const nameFont = (px) => `600 ${px}px "Cormorant Garamond", Georgia, serif`;
 
-  const drawWordmark = (t) => {
-    const p = easeOut((t - 120) / 900);
-    if (p <= 0) return;
-    ctx.globalAlpha = p;
-    const baseY = oy + 460 * S + (1 - p) * 16 * S;
-
-    const nameFont = (px) => `600 ${px}px "Cormorant Garamond", Georgia, serif`;
+  /* avoid an in-canvas font swap mid-animation, and re-measure only when needed */
+  let fontsReady = document.fonts.check('600 96px "Cormorant Garamond"');
+  document.fonts.load('600 96px "Cormorant Garamond"').then(() => { fontsReady = true; wm = null; });
+  let wm = null; // cached wordmark metrics
+  const measureWordmark = () => {
     ctx.font = nameFont(96 * S);
     const w1 = ctx.measureText("Dr. Caryn M").width;
     const w3 = ctx.measureText("Allister").width;
     ctx.font = nameFont(96 * 0.64 * S);
     const wc = ctx.measureText("c").width;
     const total = w1 + wc + w3;
-    const fit = Math.min(1, (W * 0.88) / total);
+    return { S, w1, wc, w3, total, fit: Math.min(1, (W * 0.88) / total) };
+  };
+
+  const drawWordmark = (t) => {
+    const p = easeOut((t - 120) / 900);
+    if (p <= 0) return;
+    ctx.globalAlpha = p;
+    const baseY = oy + 460 * S + (1 - p) * 16 * S;
+    if (!wm || wm.S !== S) wm = measureWordmark();
+    const { w1, wc, w3, total, fit } = wm;
 
     ctx.save();
     ctx.translate(W / 2, baseY);
@@ -138,7 +152,7 @@ if (playIntro) {
   };
 
   const qaOffset = +(new URLSearchParams(location.search).get("it") || 0); // QA: render the timeline at +N ms
-  let t0 = null;
+  let t0 = null, bgAt = null;
   const frame = (now) => {
     if (t0 === null) t0 = now - qaOffset;
     const t = now - t0;
@@ -147,15 +161,18 @@ if (playIntro) {
     ctx.globalCompositeOperation = "source-over";
 
     // curtain: pre-blurred painting with a slow settle-zoom, paper wash, wordmark
+    ctx.fillStyle = "#f6f4ef";
+    ctx.fillRect(0, 0, W, H);
     if (bg.complete && bg.naturalWidth) {
+      if (bgAt === null) bgAt = t;
       const z = 1.08 - 0.08 * Math.min(1, t / 6000);
       const bw = 1600 * S * z, bh = 900 * S * z;
+      ctx.globalAlpha = Math.min(1, (t - bgAt) / 300 + (bgAt < 50 ? 1 : 0)); // fade in if it arrived late
       ctx.drawImage(bg, (W - bw) / 2, (H - bh) / 2, bw, bh);
+      ctx.globalAlpha = 1;
       ctx.fillStyle = "rgba(246,244,239,0.45)";
-    } else {
-      ctx.fillStyle = "#f6f4ef";
+      ctx.fillRect(0, 0, W, H);
     }
-    ctx.fillRect(0, 0, W, H);
     drawWordmark(t);
 
     // the wipe: splats erase the curtain, revealing the live page beneath
@@ -178,6 +195,7 @@ if (playIntro) {
       setTimeout(() => {
         document.body.classList.remove("intro-on", "intro-fade");
         removeEventListener("resize", resize);
+        canvas.width = canvas.height = 0;   // release the backing store (~20MB at 2x DPR)
       }, 420);
     }
   };
@@ -196,7 +214,7 @@ WORKS.forEach((w, i) => {
   fig.setAttribute("aria-label", `${w.title}, ${w.medium}. Open viewer.`);
   fig.innerHTML = `
     <div class="work-frame" style="--wash:${w.wash}">
-      <img src="assets/art/${w.slug}.jpg" alt="${w.title} — ${w.medium}" loading="lazy">
+      <img src="assets/art/${w.slug}.jpg" alt="${w.title} — ${w.medium}" width="${w.w}" height="${w.h}" loading="lazy">
     </div>
     <figcaption class="work-caption">
       <span class="t"><span class="idx">${String(i + 1).padStart(2, "0")}</span>${w.title}</span>
@@ -220,7 +238,7 @@ FEATURED.forEach((slug, n) => {
   card.innerHTML = `
     <span class="feat-no">${String(n + 1).padStart(2, "0")}</span>
     <div class="feat-img" style="--wash:${w.wash}">
-      <img src="assets/art/${w.slug}.jpg" alt="${w.title} — ${w.medium}" loading="lazy">
+      <img src="assets/art/${w.slug}.jpg" alt="${w.title} — ${w.medium}" width="${w.w}" height="${w.h}" loading="lazy">
     </div>
     <figcaption class="feat-caption">
       <span class="t">${w.title}</span>
@@ -239,6 +257,7 @@ let dragState = null;
 let suppressClick = false;
 track.addEventListener("pointerdown", (e) => {
   if (e.pointerType !== "mouse") return;
+  suppressClick = false;                        // never let a stale flag eat this interaction
   dragState = { x: e.clientX, left: track.scrollLeft, moved: false };
   track.classList.add("dragging");
 });
@@ -248,13 +267,18 @@ addEventListener("pointermove", (e) => {
   if (Math.abs(dx) > 6) dragState.moved = true;
   track.scrollLeft = dragState.left - dx;
 });
-addEventListener("pointerup", () => {
-  if (dragState?.moved) suppressClick = true;
+const endDrag = () => {
+  if (dragState?.moved) {
+    suppressClick = true;
+    setTimeout(() => { suppressClick = false; }, 0);  // clear even if no click follows
+  }
   dragState = null;
   track.classList.remove("dragging");
-});
+};
+addEventListener("pointerup", endDrag);
+addEventListener("pointercancel", endDrag);
 track.addEventListener("click", (e) => {
-  if (suppressClick) { suppressClick = false; e.stopPropagation(); e.preventDefault(); return; }
+  if (suppressClick) { e.stopPropagation(); e.preventDefault(); return; }
   const card = e.target.closest(".feat-card");
   if (card) openLb(+card.dataset.index);
 }, true);
@@ -268,8 +292,13 @@ track.addEventListener("keydown", (e) => {
 /* ---------- filters ---------- */
 const filterBtns = document.querySelectorAll(".filter");
 filterBtns.forEach((btn) => {
+  btn.setAttribute("aria-pressed", btn.classList.contains("is-active") ? "true" : "false");
   btn.addEventListener("click", () => {
-    filterBtns.forEach((b) => b.classList.toggle("is-active", b === btn));
+    filterBtns.forEach((b) => {
+      const on = b === btn;
+      b.classList.toggle("is-active", on);
+      b.setAttribute("aria-pressed", on ? "true" : "false");
+    });
     const f = btn.dataset.filter;
     document.querySelectorAll(".work").forEach((el) => {
       el.classList.toggle("is-hidden", f !== "all" && el.dataset.cat !== f);
@@ -293,9 +322,9 @@ if (FLAT) document.querySelector(".hero").style.minHeight = "auto";
 
 /* ---------- header state ---------- */
 const header = document.getElementById("site-header");
-addEventListener("scroll", () => {
-  header.classList.toggle("scrolled", scrollY > 40);
-}, { passive: true });
+const setHeaderState = () => header.classList.toggle("scrolled", scrollY > 40);
+addEventListener("scroll", setHeaderState, { passive: true });
+setHeaderState();   // a restored mid-page scroll position may never fire a scroll event
 
 /* ---------- hero parallax (desktop) ---------- */
 const hero = document.querySelector(".hero");
@@ -315,7 +344,7 @@ if (matchMedia("(hover: hover) and (pointer: fine)").matches && !matchMedia("(pr
 
 /* ---------- cursor "view" bubble ---------- */
 const bubble = document.getElementById("cursor-view");
-if (matchMedia("(hover: hover) and (pointer: fine)").matches) {
+if (matchMedia("(hover: hover) and (pointer: fine)").matches && !REDUCED) {
   let x = 0, y = 0, bx = 0, by = 0, scale = 0, target = 0, raf = null;
   const label = bubble.querySelector("span");
   const loop = () => {
@@ -323,14 +352,19 @@ if (matchMedia("(hover: hover) and (pointer: fine)").matches) {
     by += (y - by) * 0.18;
     scale += (target - scale) * 0.18;
     bubble.style.transform = `translate(${bx}px, ${by}px) translate(-50%, -50%) scale(${scale.toFixed(3)})`;
+    // stop burning frames once everything has settled; mousemove restarts us
+    if (Math.abs(x - bx) < 0.1 && Math.abs(y - by) < 0.1 && Math.abs(target - scale) < 0.005) {
+      raf = null;
+      return;
+    }
     raf = requestAnimationFrame(loop);
   };
   addEventListener("mousemove", (e) => {
     x = e.clientX; y = e.clientY;
-    if (!raf) { bx = x; by = y; loop(); }
     const overWork = e.target.closest(".work, .feat-card");
     target = overWork ? 1 : 0;
     if (overWork) label.textContent = e.target.closest(".feat-card") ? "Open" : "View";
+    if (!raf) raf = requestAnimationFrame(loop);
   }, { passive: true });
 }
 
@@ -342,14 +376,21 @@ const lbMedium = document.getElementById("lb-medium");
 const lbCount = document.getElementById("lb-count");
 let current = 0;
 let visible = [];
+let hideTimer = null;
+let lastFocus = null;
 
 function openLb(index) {
+  clearTimeout(hideTimer);                     // a close may still be pending — cancel it
   visible = [...document.querySelectorAll(".work:not(.is-hidden)")].map((el) => +el.dataset.index);
-  current = Math.max(0, visible.indexOf(index));
+  if (!visible.includes(index)) visible = WORKS.map((_, i) => i);  // e.g. featured card outside the active filter
+  current = visible.indexOf(index);
   renderLb();
+  lastFocus = document.activeElement;
   lb.hidden = false;
-  requestAnimationFrame(() => lb.classList.add("open"));
+  void lb.offsetWidth;                         // force a style flush so the ink-bloom transition actually plays
+  lb.classList.add("open");
   document.body.style.overflow = "hidden";
+  lb.querySelector(".lb-close").focus({ preventScroll: true });
 }
 function renderLb() {
   const w = WORKS[visible[current]];
@@ -362,7 +403,9 @@ function renderLb() {
 function closeLb() {
   lb.classList.remove("open");
   document.body.style.overflow = "";
-  setTimeout(() => { lb.hidden = true; }, 580);   // let the ink blot shrink back
+  clearTimeout(hideTimer);
+  hideTimer = setTimeout(() => { lb.hidden = true; }, 580);   // let the ink blot shrink back
+  if (lastFocus?.focus) lastFocus.focus({ preventScroll: true });
 }
 const step = (d) => { current = (current + d + visible.length) % visible.length; renderLb(); };
 
@@ -383,22 +426,35 @@ lb.addEventListener("click", (e) => {
   if (e.target === lb || e.target.classList.contains("lb-ink")) closeLb();
 });
 addEventListener("keydown", (e) => {
-  if (lb.hidden) return;
+  if (!lb.classList.contains("open")) return;   // ignore keys during the closing fade too
   if (e.key === "Escape") closeLb();
   if (e.key === "ArrowLeft") step(-1);
   if (e.key === "ArrowRight") step(1);
+  if (e.key === "Tab") {
+    // keep focus inside the dialog
+    const focusables = [...lb.querySelectorAll("button, a[href]")];
+    const first = focusables[0], last = focusables[focusables.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    else if (!lb.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
+  }
 });
 
 /* QA: ?lb=N opens the viewer on work N */
 const lbQA = new URLSearchParams(location.search).get("lb");
 if (lbQA !== null) setTimeout(() => openLb(+lbQA || 0), 400);
 
-/* swipe */
-let touchX = null;
-lb.addEventListener("touchstart", (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+/* swipe (track a single touch by identifier so a second finger can't fake a step) */
+let touchX = null, touchId = null;
+lb.addEventListener("touchstart", (e) => {
+  if (touchId !== null) return;
+  touchX = e.touches[0].clientX;
+  touchId = e.touches[0].identifier;
+}, { passive: true });
 lb.addEventListener("touchend", (e) => {
-  if (touchX === null) return;
-  const dx = e.changedTouches[0].clientX - touchX;
+  const t = [...e.changedTouches].find((c) => c.identifier === touchId);
+  if (!t || touchX === null) return;
+  const dx = t.clientX - touchX;
   if (Math.abs(dx) > 48) step(dx > 0 ? -1 : 1);
-  touchX = null;
+  touchX = null; touchId = null;
 }, { passive: true });

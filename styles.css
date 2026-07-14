@@ -7,7 +7,7 @@
   --paper-deep: #efece4;
   --ink: #1c1a17;
   --ink-soft: #43403a;
-  --muted: #7a7468;
+  --muted: #6b655a;
   --line: rgba(28, 26, 23, 0.14);
   --serif: "Cormorant Garamond", Georgia, serif;
   --sans: "Inter", -apple-system, "Helvetica Neue", sans-serif;
@@ -31,7 +31,10 @@ body {
 
 ::selection { background: var(--ink); color: var(--paper); }
 
-img { display: block; max-width: 100%; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.lightbox :focus-visible { outline-color: var(--paper); }
+
+img { display: block; max-width: 100%; height: auto; }   /* width/height attrs reserve space; CSS keeps ratio */
 
 /* --- paper grain -------------------------------------------------- */
 .grain {
@@ -59,6 +62,7 @@ img { display: block; max-width: 100%; }
   display: none;
   opacity: 1;
   transition: opacity 0.4s ease;
+  pointer-events: none;
 }
 body.intro-on { overflow: hidden; }
 body.intro-on #intro { display: block; }
@@ -405,7 +409,6 @@ section { position: relative; }
   break-inside: avoid;
   margin-bottom: clamp(2.2rem, 4vw, 3.6rem);
   cursor: none;
-  transition: opacity 0.45s var(--ease), transform 0.45s var(--ease);
 }
 @media (hover: none) { .work { cursor: pointer; } }
 .work.is-hidden { display: none; }
@@ -551,6 +554,8 @@ section { position: relative; }
 }
 .inquire-inner { max-width: 46rem; margin: 0 auto; }
 .inquire .eyebrow { margin-bottom: 1.2rem; }
+.inquire .num { display: block; margin: 0 auto 1rem; }
+.inquire .num::before { left: 50%; margin-left: -3.1em; }
 .inquire-title {
   font-family: var(--serif);
   font-weight: 500;
@@ -629,7 +634,7 @@ footer {
 #lb-title { font-family: var(--serif); font-style: italic; font-size: 1.5rem; color: var(--paper); }
 #lb-medium { font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(246, 244, 239, 0.6); }
 .lb-foot { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem 2rem; flex-wrap: wrap; margin-top: 0.5rem; }
-#lb-count { font-size: 0.7rem; letter-spacing: 0.2em; color: rgba(246, 244, 239, 0.45); }
+#lb-count { font-size: 0.7rem; letter-spacing: 0.2em; color: rgba(246, 244, 239, 0.62); }
 #lb-inquire {
   font-size: 0.72rem; font-weight: 500;
   letter-spacing: 0.16em; text-transform: uppercase;
@@ -690,6 +695,9 @@ footer {
   .reveal { opacity: 1; transform: none; transition: none; }
   .grain, .ticker-row, .hero-float { animation: none; }
   .work-frame img, .work:hover .work-frame img { transform: none; }
+  .feat-card:hover .feat-img img { transform: none; }
+  .chip, .hero h1:hover .chip { transform: none; transition: none; }
+  .lb-ink { transition: none; }
   #intro, body.intro-on #intro { display: none; }
 }
 
@@ -719,8 +727,14 @@ footer {
   .artist-fig { position: static; max-width: 440px; }
   .artist-facts li span { flex-basis: 100%; }
 
-  .lb-stage { max-width: 94vw; }
-  .lb-stage img { max-height: calc(88vh - 9rem); }
+  .lb-stage { max-width: 94vw; padding-top: 2.6rem; }
+  .lb-stage img { max-height: calc(88vh - 12rem); }
+
+  /* comfortable tap targets */
+  #site-header nav a { padding: 0.6rem 0.15rem; }
+  .filter { padding: 0.75rem 1.3rem; }
+  .foot-social a { padding: 0.6rem 0.2rem; }
+  #lb-inquire { padding: 0.7rem 0 0.5rem; }
   .lb-prev, .lb-next {
     top: auto; bottom: 1.1rem;
     transform: none;
@@ -735,6 +749,15 @@ footer {
   .lb-close { top: 0.6rem; right: 0.6rem; }
 }
 
+@media (min-width: 600px) and (max-width: 880px) {
+  .grid { columns: 2 260px; }
+}
+
 @media (min-width: 881px) and (max-width: 1100px) {
   .grid { columns: 2 300px; }
+}
+
+@media (max-width: 480px) {
+  #site-header { flex-wrap: wrap; row-gap: 0; padding-top: 0.85rem; padding-bottom: 0.55rem; }
+  #site-header nav { width: 100%; justify-content: flex-start; gap: 1.6rem; }
 }
