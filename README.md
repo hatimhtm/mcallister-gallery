@@ -26,6 +26,9 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
+│ INTRO         Blurred-painting curtain wiped away by ink splatters —    │
+│               an SVG track matte, no video, once per session            │
+├─────────────────────────────────────────────────────────────────────────┤
 │ HERO          Serif headline with an inline painting "chip", floating   │
 │               polaroid card, mouse parallax, scrolling ticker           │
 ├─────────────────────────────────────────────────────────────────────────┤
@@ -55,9 +58,10 @@
 TYPOGRAPHY    Cormorant Garamond display serif over Inter micro-caps —
               a fine-gallery pairing on paper-white #f6f4ef.
 
-MOTION        Intro curtain (once per session), scroll reveals, floating
-              polaroid, hero parallax, seamless ticker — all honoring
-              prefers-reduced-motion.
+MOTION        Ink-splatter track-matte intro (SMIL-animated SVG mask over
+              a blurred painting — zero video, zero libraries), scroll
+              reveals, floating polaroid, hero parallax, seamless ticker —
+              all honoring prefers-reduced-motion.
 
 MOBILE        Not a squeezed desktop: full-width CTAs, swipe rails,
               horizontal filter chips, thumb-pill lightbox arrows.

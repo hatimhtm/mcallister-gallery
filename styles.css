@@ -51,24 +51,50 @@ img { display: block; max-width: 100%; }
   80% { transform: translate(2%, 2%); }
 }
 
-/* --- intro curtain ------------------------------------------------ */
+/* --- intro: ink-splatter track-matte reveal ------------------------ */
 #intro {
-  position: fixed; inset: 0; z-index: 3000;
-  background: var(--paper);
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--serif);
-  font-weight: 600;
-  font-size: clamp(1.4rem, 4vw, 2.6rem);
-  letter-spacing: 0.04em;
-  opacity: 0;
+  position: fixed; inset: 0;
+  width: 100%; height: 100%;
+  z-index: 3000;
+  display: none;
   pointer-events: none;
-  transition: opacity 0.7s ease;
 }
-#intro em { font-weight: 400; font-style: italic; margin-left: 0.35em; }
-body.intro-on #intro { opacity: 1; }
 body.intro-on { overflow: hidden; }
-#intro span { opacity: 0; transform: translateY(14px); transition: opacity 0.8s var(--ease) 0.15s, transform 0.8s var(--ease) 0.15s; }
-body.intro-on #intro span { opacity: 1; transform: none; }
+body.intro-on #intro { display: block; pointer-events: auto; }
+
+.intro-bg image {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  animation: intro-zoom 6s var(--ease) forwards;
+}
+@keyframes intro-zoom {
+  from { transform: scale(1.08); }
+  to   { transform: scale(1); }
+}
+
+.intro-word { opacity: 0; }
+body.intro-on .intro-word { animation: intro-word 0.9s var(--ease) 0.12s forwards; }
+@keyframes intro-word {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
+.iw-eyebrow { font-family: var(--sans); font-size: 21px; font-weight: 500; letter-spacing: 9px; fill: #5d574c; }
+.iw-name    { font-family: var(--serif); font-size: 96px; font-weight: 600; fill: var(--ink); }
+.iw-tag     { font-family: var(--sans); font-size: 19px; font-weight: 500; letter-spacing: 13px; fill: #5d574c; }
+
+/* portrait screens crop the 16:9 stage — shrink the wordmark to stay fully visible */
+@media (max-aspect-ratio: 9/10) {
+  .intro-word-fit { transform: scale(0.72); transform-origin: 800px 460px; }
+}
+@media (max-aspect-ratio: 3/5) {
+  .intro-word-fit { transform: scale(0.46); transform-origin: 800px 460px; }
+}
+
+/* the wipe: SMIL-scaled ink splats grow as holes in the curtain's mask
+   (SMIL is used because CSS animations inside <mask> repaint unreliably) */
+
+/* while the intro plays, hold the page's reveals so it rises as the ink clears */
+body.intro-hold .reveal { opacity: 0; transform: translateY(26px); }
 
 /* --- header ------------------------------------------------------- */
 #site-header {
@@ -664,7 +690,7 @@ footer {
   .reveal { opacity: 1; transform: none; transition: none; }
   .grain, .ticker-row, .hero-float { animation: none; }
   .work-frame img, .work:hover .work-frame img { transform: none; }
-  #intro { display: none; }
+  #intro, body.intro-on #intro { display: none; }
 }
 
 /* --- responsive --------------------------------------------------- */

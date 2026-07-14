@@ -39,11 +39,20 @@ const detailOf = (w) => [w.medium, w.size].filter(Boolean).join(" · ");
 const tickerRow = document.querySelector(".ticker-row");
 tickerRow.innerHTML += tickerRow.innerHTML;
 
-/* ---------- intro curtain ---------- */
-if (!FLAT && !sessionStorage.getItem("introShown") && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  document.body.classList.add("intro-on");
+/* ---------- intro: ink-splatter track-matte reveal ---------- */
+const playIntro = !FLAT
+  && !sessionStorage.getItem("introShown")
+  && !matchMedia("(prefers-reduced-motion: reduce)").matches;
+if (playIntro) {
   sessionStorage.setItem("introShown", "1");
-  setTimeout(() => document.body.classList.remove("intro-on"), 1500);
+  document.body.classList.add("intro-on", "intro-hold");
+  setTimeout(() => {                                                     // flick the ink
+    document.querySelectorAll("#intro animateTransform").forEach((a, i) => {
+      setTimeout(() => a.beginElement(), i * 115);
+    });
+  }, 1000);
+  setTimeout(() => document.body.classList.remove("intro-hold"), 1300);  // site rises through the splats
+  setTimeout(() => document.body.classList.remove("intro-on"), 2750);
 }
 
 /* ---------- build works grid ---------- */
@@ -146,10 +155,11 @@ const io = new IntersectionObserver(
   }),
   { threshold: 0.12, rootMargin: "0px 0px -4% 0px" }
 );
-document.querySelectorAll(".reveal").forEach((el) => {
+const startReveals = () => document.querySelectorAll(".reveal").forEach((el) => {
   if (FLAT) el.classList.add("in");
   else io.observe(el);
 });
+startReveals();
 if (FLAT) document.querySelector(".hero").style.minHeight = "auto";
 
 /* ---------- header state ---------- */
