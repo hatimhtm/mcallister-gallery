@@ -22,9 +22,10 @@
   <link rel="preload" as="image" href="assets/art/the-muse.jpg" fetchpriority="high">
   <link rel="preload" as="image" href="assets/intro-blur.jpg">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231c1a17'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-style='italic' font-size='30' fill='%23f6f4ef' text-anchor='middle'%3ECM%3C/text%3E%3C/svg%3E">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/cormorant-garamond-normal-500.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/cormorant-garamond-normal-600.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-normal-300.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-normal-500.woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -128,7 +129,7 @@
       <div class="artist-cols">
         <div class="artist-side reveal">
           <figure class="artist-fig">
-            <img src="assets/art/garden-reverie.jpg" alt="Garden Reverie — loose abstract florals in rose, teal and citron watercolor" width="1219" height="1600" loading="lazy">
+            <img src="assets/art/garden-reverie.jpg" srcset="assets/art/garden-reverie-800.jpg 800w, assets/art/garden-reverie.jpg 1219w" sizes="(max-width: 880px) 88vw, 430px" alt="Garden Reverie — loose abstract florals in rose, teal and citron watercolor" width="1219" height="1600" loading="lazy">
             <figcaption><em>Garden Reverie</em> · watercolor</figcaption>
           </figure>
         </div>

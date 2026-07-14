@@ -43,6 +43,15 @@ const store = {
 
 const detailOf = (w) => [w.medium, w.size].filter(Boolean).join(" · ");
 
+/* works wider than 900px have an 800px variant for grid-size rendering;
+   the full-resolution file is reserved for the lightbox */
+const srcsetFor = (w, sizes) =>
+  w.w > 900
+    ? ` srcset="assets/art/${w.slug}-800.jpg 800w, assets/art/${w.slug}.jpg ${w.w}w" sizes="${sizes}"`
+    : "";
+const GRID_SIZES = "(max-width: 599px) 92vw, (max-width: 1100px) 46vw, 30vw";
+const FEAT_SIZES = "(max-width: 880px) 82vw, 560px";
+
 /* duplicate ticker content so the -50% translate loops seamlessly */
 const tickerRow = document.querySelector(".ticker-row");
 tickerRow.innerHTML += tickerRow.innerHTML;
@@ -214,7 +223,7 @@ WORKS.forEach((w, i) => {
   fig.setAttribute("aria-label", `${w.title}, ${w.medium}. Open viewer.`);
   fig.innerHTML = `
     <div class="work-frame" style="--wash:${w.wash}">
-      <img src="assets/art/${w.slug}.jpg" alt="${w.title} — ${w.medium}" width="${w.w}" height="${w.h}" loading="lazy">
+      <img src="assets/art/${w.slug}.jpg"${srcsetFor(w, GRID_SIZES)} alt="${w.title} — ${w.medium}" width="${w.w}" height="${w.h}" loading="lazy">
     </div>
     <figcaption class="work-caption">
       <span class="t"><span class="idx">${String(i + 1).padStart(2, "0")}</span>${w.title}</span>
@@ -238,7 +247,7 @@ FEATURED.forEach((slug, n) => {
   card.innerHTML = `
     <span class="feat-no">${String(n + 1).padStart(2, "0")}</span>
     <div class="feat-img" style="--wash:${w.wash}">
-      <img src="assets/art/${w.slug}.jpg" alt="${w.title} — ${w.medium}" width="${w.w}" height="${w.h}" loading="lazy">
+      <img src="assets/art/${w.slug}.jpg"${srcsetFor(w, FEAT_SIZES)} alt="${w.title} — ${w.medium}" width="${w.w}" height="${w.h}" loading="lazy">
     </div>
     <figcaption class="feat-caption">
       <span class="t">${w.title}</span>

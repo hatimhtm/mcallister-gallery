@@ -70,10 +70,14 @@ MOBILE        Not a squeezed desktop: full-width CTAs, swipe rails,
               horizontal filter chips, thumb-pill lightbox arrows.
 
 IMAGES        Every photographed frame was cropped to the artwork;
-              lazy-loading with per-piece watercolor wash placeholders.
+              real lazy-loading with intrinsic sizes (no layout shift),
+              responsive srcset (800px variants for grid rendering,
+              full resolution reserved for the lightbox), watercolor
+              wash placeholders per piece.
 
-ZERO ANYTHING No framework, no bundler, no npm. index.html + styles.css
-              + app.js. Google Fonts is the only external request.
+ZERO ANYTHING No framework, no bundler, no npm, no CDN. index.html +
+              styles.css + app.js + self-hosted fonts (latin woff2
+              subsets, OFL). The page makes zero external requests.
 ```
 
 ---
@@ -103,7 +107,8 @@ Every artwork lives in one array at the top of [`app.js`](app.js):
 - **Rename a piece** → edit `title`.
 - **Add dimensions** → fill `size` (e.g. `"11 × 14 in"`) — it appears in captions and the viewer automatically.
 - **Swap the highlights rail** → the `FEATURED` slug list right below.
-- **Add a work** → drop a `.jpg` in `assets/art/` and add one line.
+- **Add a work** → drop a `.jpg` in `assets/art/` and add one line (with its `w`/`h` pixel size;
+  if it's wider than 900px, also export an 800px-wide `<slug>-800.jpg` for the grid).
 
 `?flat` on any URL disables animations — handy for pixel-perfect screenshots.
 
