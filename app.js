@@ -41,7 +41,7 @@ const SALON = [
   { slug: "salon-05", title: "Silver Bloom", medium: "Watercolor & ink", size: "Framed", w: 1600, h: 1200, cat: "salon", wash: "#94896f" },
   { slug: "salon-06", title: "Cove", medium: "Watercolor", size: "Framed", w: 1200, h: 1600, cat: "salon", wash: "#887d69" },
   { slug: "salon-07", title: "Carnations", medium: "Watercolor", size: "Framed", w: 1200, h: 1600, cat: "salon", wash: "#a29282" },
-  { slug: "salon-08", title: "Ember Shore", medium: "Acrylic", size: "Framed", w: 1054, h: 1600, cat: "salon", wash: "#5b6a7b" },
+  { slug: "salon-08", title: "Ember Shore", medium: "Acrylic", size: "", w: 1054, h: 1600, cat: "salon", wash: "#5b6a7b" },
   { slug: "salon-09", title: "Undertow", medium: "Mixed media", size: "Framed", w: 1600, h: 1274, cat: "salon", wash: "#8a8b87" },
   { slug: "salon-10", title: "Cocktail Hour", medium: "Watercolor & ink", size: "Framed suite of eight", w: 1600, h: 1546, cat: "salon", wash: "#958f82" },
   { slug: "salon-11", title: "Snow Field", medium: "Mixed media", size: "Framed", w: 1475, h: 1600, cat: "salon", wash: "#8a8882" },
@@ -283,7 +283,7 @@ WORKS.forEach((w, i) => {
       <img src="assets/art/${w.slug}.jpg"${srcsetFor(w, GRID_SIZES)} alt="${w.title} — ${w.medium}" width="${w.w}" height="${w.h}" loading="lazy">
     </div>
     <figcaption class="work-caption">
-      <span class="t"><span class="idx">${String(i + 1).padStart(2, "0")}</span>${w.title}</span>
+      <span class="t"><span class="idx">${String(i + 1).padStart(2, "0")}</span><a href="work/${w.slug}.html">${w.title}</a></span>
       <span class="m">${detailOf(w)}</span>
     </figcaption>`;
   grid.appendChild(fig);
@@ -328,12 +328,13 @@ SALON.forEach((w, i) => {
       <img src="assets/art/${w.slug}.jpg"${srcsetFor(w, GRID_SIZES)} alt="${w.title} — ${w.medium}" width="${w.w}" height="${w.h}" loading="lazy">
     </div>
     <figcaption class="work-caption">
-      <span class="t"><span class="idx">${String(i + 1).padStart(2, "0")}</span>${w.title}</span>
+      <span class="t"><span class="idx">${String(i + 1).padStart(2, "0")}</span><a href="work/${w.slug}.html">${w.title}</a></span>
       <span class="m">${detailOf(w)}</span>
     </figcaption>`;
   salonGrid.appendChild(fig);
 });
 salonGrid.addEventListener("click", (e) => {
+  if (e.target.closest("a")) return;              // caption link → its page
   const work = e.target.closest(".work");
   if (work) openLb(+work.dataset.index);
 });
@@ -496,6 +497,9 @@ function renderLb() {
   lbTitle.textContent = w.title;
   lbMedium.textContent = detailOf(w);
   lbCount.textContent = `${String(current + 1).padStart(2, "0")} / ${String(visible.length).padStart(2, "0")}`;
+  const page = document.getElementById("lb-page");
+  page.style.display = w.slug === "salon-in-situ" ? "none" : "";
+  page.href = `work/${w.slug}.html`;
 }
 function closeLb() {
   lb.classList.remove("open");
@@ -507,6 +511,7 @@ function closeLb() {
 const step = (d) => { current = (current + d + visible.length) % visible.length; renderLb(); };
 
 grid.addEventListener("click", (e) => {
+  if (e.target.closest("a")) return;              // caption link → its page
   const work = e.target.closest(".work");
   if (work) openLb(+work.dataset.index);
 });
