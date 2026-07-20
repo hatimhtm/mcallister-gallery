@@ -30,6 +30,63 @@ const WORKS = [
 /* Slugs featured in the "On View" showcase, in order */
 const FEATURED = ["meadow", "the-muse", "autumn-fire", "prima", "mirror-lake", "marigold"];
 
+/* The Salon: framed originals, photographed ready to hang. Rendered in
+   their frames — the frame is part of the object. First entry is the
+   installation photograph that opens the section. */
+const SALON = [
+  { slug: "salon-in-situ", title: "The Salon, in situ", medium: "The collection installed", size: "Connecticut", w: 1200, h: 1600, cat: "salon", wash: "#8a8378" },
+  { slug: "salon-02", title: "Horizon in Red", medium: "Watercolor", size: "Framed", w: 1600, h: 1385, cat: "salon", wash: "#855e57" },
+  { slug: "salon-03", title: "Lotus", medium: "Watercolor", size: "Framed", w: 1600, h: 1050, cat: "salon", wash: "#877e6c" },
+  { slug: "salon-04", title: "Storm Light", medium: "Watercolor", size: "Framed", w: 1600, h: 1200, cat: "salon", wash: "#797567" },
+  { slug: "salon-05", title: "Silver Bloom", medium: "Watercolor & ink", size: "Framed", w: 1600, h: 1200, cat: "salon", wash: "#94896f" },
+  { slug: "salon-06", title: "Cove", medium: "Watercolor", size: "Framed", w: 1200, h: 1600, cat: "salon", wash: "#887d69" },
+  { slug: "salon-07", title: "Carnations", medium: "Watercolor", size: "Framed", w: 1200, h: 1600, cat: "salon", wash: "#a29282" },
+  { slug: "salon-08", title: "Ember Shore", medium: "Acrylic", size: "Framed", w: 1054, h: 1600, cat: "salon", wash: "#5b6a7b" },
+  { slug: "salon-09", title: "Undertow", medium: "Mixed media", size: "Framed", w: 1600, h: 1274, cat: "salon", wash: "#8a8b87" },
+  { slug: "salon-10", title: "Cocktail Hour", medium: "Watercolor & ink", size: "Framed suite of eight", w: 1600, h: 1546, cat: "salon", wash: "#958f82" },
+  { slug: "salon-11", title: "Snow Field", medium: "Mixed media", size: "Framed", w: 1475, h: 1600, cat: "salon", wash: "#8a8882" },
+  { slug: "salon-12", title: "Plume", medium: "Mixed media", size: "Framed", w: 1600, h: 1113, cat: "salon", wash: "#8b867b" },
+  { slug: "salon-13", title: "Dogwood Nights", medium: "Watercolor & ink", size: "Framed", w: 1600, h: 1075, cat: "salon", wash: "#948381" },
+  { slug: "salon-14", title: "Wild Bouquet", medium: "Watercolor & ink", size: "Framed", w: 1174, h: 1600, cat: "salon", wash: "#877d71" },
+  { slug: "salon-15", title: "Tulip", medium: "Watercolor", size: "Framed", w: 1200, h: 1600, cat: "salon", wash: "#a49285" },
+  { slug: "salon-16", title: "Corps de Ballet", medium: "Acrylic on canvas", size: "Framed", w: 1200, h: 1600, cat: "salon", wash: "#988e7e" },
+  { slug: "salon-17", title: "Island Walk", medium: "Watercolor", size: "Framed", w: 1409, h: 1600, cat: "salon", wash: "#828362" },
+  { slug: "salon-18", title: "Garden Suite", medium: "Watercolor & ink", size: "Framed suite of nine", w: 1484, h: 1600, cat: "salon", wash: "#9a8d78" },
+  { slug: "salon-19", title: "Night Sail", medium: "Mixed media", size: "Framed", w: 1600, h: 1231, cat: "salon", wash: "#7d7e7f" },
+  { slug: "salon-20", title: "The Sage", medium: "Ink & wash", size: "Framed", w: 1252, h: 1600, cat: "salon", wash: "#9a8e7b" },
+  { slug: "salon-21", title: "Five Hares", medium: "Watercolor", size: "Framed suite of five", w: 1600, h: 711, cat: "salon", wash: "#877d6e" },
+  { slug: "salon-22", title: "Sunset Regatta", medium: "Watercolor", size: "Framed", w: 1600, h: 1344, cat: "salon", wash: "#a4947f" },
+  { slug: "salon-23", title: "Composition in Silver", medium: "Mixed media", size: "Framed", w: 1200, h: 1600, cat: "salon", wash: "#948770" },
+  { slug: "salon-24", title: "House in the Mist", medium: "Watercolor", size: "Framed", w: 1138, h: 1600, cat: "salon", wash: "#8e9176" },
+  { slug: "salon-25", title: "Scarlet Dahlia", medium: "Watercolor", size: "Framed", w: 1284, h: 1600, cat: "salon", wash: "#8e6258" },
+  { slug: "salon-26", title: "Firebird Garden", medium: "Mixed media", size: "Framed", w: 1296, h: 1600, cat: "salon", wash: "#8a6d63" },
+  { slug: "salon-27", title: "Butterfly in Plum", medium: "Watercolor & ink", size: "Framed", w: 1200, h: 1600, cat: "salon", wash: "#a08f83" },
+  { slug: "salon-28", title: "Blue Bunny", medium: "Acrylic on canvas", size: "Framed", w: 1352, h: 1600, cat: "salon", wash: "#507878" },
+  { slug: "salon-29", title: "Midnight Hare", medium: "Acrylic", size: "Framed", w: 1322, h: 1600, cat: "salon", wash: "#867f72" },
+  { slug: "salon-30", title: "Serenade", medium: "Watercolor", size: "Framed", w: 1290, h: 1600, cat: "salon", wash: "#9b7c56" },
+  { slug: "salon-31", title: "Beneath the Palm", medium: "Watercolor", size: "Framed", w: 1414, h: 1600, cat: "salon", wash: "#767c62" },
+  { slug: "salon-32", title: "Waterfall", medium: "Mixed media", size: "Framed", w: 1297, h: 1600, cat: "salon", wash: "#8d8c76" },
+  { slug: "salon-33", title: "Riverbank Poppies", medium: "Watercolor", size: "Framed", w: 1511, h: 1600, cat: "salon", wash: "#97998e" },
+  { slug: "salon-34", title: "Honeybee", medium: "Watercolor & ink", size: "Framed", w: 1200, h: 1600, cat: "salon", wash: "#9a8e80" },
+  { slug: "salon-35", title: "Marsh Heron", medium: "Mixed media", size: "Framed", w: 1278, h: 1600, cat: "salon", wash: "#827962" },
+  { slug: "salon-36", title: "Lake in the Mountains", medium: "Watercolor", size: "Framed", w: 1281, h: 1600, cat: "salon", wash: "#797969" },
+  { slug: "salon-37", title: "Garden Cat", medium: "Watercolor", size: "Framed", w: 1255, h: 1600, cat: "salon", wash: "#7f735b" },
+  { slug: "salon-38", title: "Cherry Tree", medium: "Watercolor", size: "Framed", w: 1600, h: 1190, cat: "salon", wash: "#b9ac99" },
+  { slug: "salon-39", title: "Poppies at Noon", medium: "Watercolor", size: "Framed", w: 1600, h: 1212, cat: "salon", wash: "#ab9d8f" },
+  { slug: "salon-40", title: "Quiet Marsh", medium: "Mixed media", size: "Framed", w: 1200, h: 1600, cat: "salon", wash: "#9c8f7b" },
+  { slug: "salon-41", title: "The Garden Gate", medium: "Watercolor & ink", size: "Framed", w: 1286, h: 1600, cat: "salon", wash: "#757566" },
+  { slug: "salon-42", title: "Nocturne", medium: "Mixed media", size: "Framed", w: 1200, h: 1600, cat: "salon", wash: "#8f8a7f" },
+  { slug: "salon-43", title: "Little Scruff", medium: "Acrylic", size: "Framed", w: 1600, h: 1571, cat: "salon", wash: "#6b6760" },
+  { slug: "salon-44", title: "Sweethearts by the Sea", medium: "Acrylic on canvas", size: "Framed", w: 1033, h: 1600, cat: "salon", wash: "#97948d" },
+  { slug: "salon-46", title: "Two Trees", medium: "Watercolor", size: "Framed", w: 1600, h: 1183, cat: "salon", wash: "#7b7d48" },
+  { slug: "salon-47", title: "Red Mesa", medium: "Watercolor", size: "Framed", w: 1600, h: 1081, cat: "salon", wash: "#817553" },
+  { slug: "salon-48", title: "Evening Dogwood", medium: "Watercolor", size: "Framed", w: 1600, h: 1122, cat: "salon", wash: "#776b55" },
+  { slug: "salon-49", title: "Daydreamer", medium: "Mixed media", size: "Framed", w: 1234, h: 1600, cat: "salon", wash: "#97876f" },
+  { slug: "salon-50", title: "Safe Harbor", medium: "Watercolor", size: "Framed", w: 1560, h: 1600, cat: "salon", wash: "#99918b" },
+];
+
+const ALLWORKS = WORKS.concat(SALON);   /* one shared index space for the lightbox */
+
 const FLAT = new URLSearchParams(location.search).has("flat"); // visual-QA mode: no animations
 if (FLAT) document.documentElement.style.scrollBehavior = "auto";
 
@@ -256,6 +313,37 @@ FEATURED.forEach((slug, n) => {
   track.appendChild(card);
 });
 
+/* ---------- build salon grid ---------- */
+const salonGrid = document.getElementById("salon-grid");
+SALON.forEach((w, i) => {
+  const idx = WORKS.length + i;
+  const fig = document.createElement("figure");
+  fig.className = "work reveal" + (w.slug === "salon-in-situ" ? " salon-lead" : "");
+  fig.dataset.index = idx;
+  fig.tabIndex = 0;
+  fig.setAttribute("role", "button");
+  fig.setAttribute("aria-label", `${w.title}, ${w.medium}. Open viewer.`);
+  fig.innerHTML = `
+    <div class="work-frame" style="--wash:${w.wash}">
+      <img src="assets/art/${w.slug}.jpg"${srcsetFor(w, GRID_SIZES)} alt="${w.title} — ${w.medium}" width="${w.w}" height="${w.h}" loading="lazy">
+    </div>
+    <figcaption class="work-caption">
+      <span class="t"><span class="idx">${String(i + 1).padStart(2, "0")}</span>${w.title}</span>
+      <span class="m">${detailOf(w)}</span>
+    </figcaption>`;
+  salonGrid.appendChild(fig);
+});
+salonGrid.addEventListener("click", (e) => {
+  const work = e.target.closest(".work");
+  if (work) openLb(+work.dataset.index);
+});
+salonGrid.addEventListener("keydown", (e) => {
+  if ((e.key === "Enter" || e.key === " ") && e.target.closest(".work")) {
+    e.preventDefault();
+    openLb(+e.target.closest(".work").dataset.index);
+  }
+});
+
 document.querySelectorAll(".work-frame img").forEach((img) => {
   if (img.complete && img.naturalWidth) img.classList.add("loaded");
   else img.addEventListener("load", () => img.classList.add("loaded"), { once: true });
@@ -309,7 +397,7 @@ filterBtns.forEach((btn) => {
       b.setAttribute("aria-pressed", on ? "true" : "false");
     });
     const f = btn.dataset.filter;
-    document.querySelectorAll(".work").forEach((el) => {
+    grid.querySelectorAll(".work").forEach((el) => {
       el.classList.toggle("is-hidden", f !== "all" && el.dataset.cat !== f);
     });
   });
@@ -391,7 +479,7 @@ let lastFocus = null;
 function openLb(index) {
   clearTimeout(hideTimer);                     // a close may still be pending — cancel it
   visible = [...document.querySelectorAll(".work:not(.is-hidden)")].map((el) => +el.dataset.index);
-  if (!visible.includes(index)) visible = WORKS.map((_, i) => i);  // e.g. featured card outside the active filter
+  if (!visible.includes(index)) visible = ALLWORKS.map((_, i) => i);  // e.g. featured card outside the active filter
   current = visible.indexOf(index);
   renderLb();
   lastFocus = document.activeElement;
@@ -402,7 +490,7 @@ function openLb(index) {
   lb.querySelector(".lb-close").focus({ preventScroll: true });
 }
 function renderLb() {
-  const w = WORKS[visible[current]];
+  const w = ALLWORKS[visible[current]];
   lbImg.src = `assets/art/${w.slug}.jpg`;
   lbImg.alt = `${w.title} — ${w.medium}`;
   lbTitle.textContent = w.title;

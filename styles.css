@@ -535,6 +535,11 @@ section { position: relative; }
   text-align: right;
 }
 
+/* --- salon -------------------------------------------------------- */
+.salon { padding-top: 0; }
+.salon .work-frame { box-shadow: 0 22px 44px -20px rgba(28, 26, 23, 0.45); }
+.salon-lead .work-caption .t { font-style: italic; }
+
 /* --- quote band --------------------------------------------------- */
 .quote-band {
   background: var(--ink);
@@ -834,5 +839,6 @@ footer {
 
 @media (max-width: 480px) {
   #site-header { flex-wrap: wrap; row-gap: 0; padding-top: 0.85rem; padding-bottom: 0.55rem; }
-  #site-header nav { width: 100%; justify-content: flex-start; gap: 1.6rem; }
+  #site-header nav { width: 100%; justify-content: space-between; gap: 0.4rem; }
+  #site-header nav a { letter-spacing: 0.1em; }
 }

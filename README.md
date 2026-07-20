@@ -39,11 +39,14 @@
 │               (Florals · Land & Sea · Menagerie · Abstract),            │
 │               numbered catalogue captions, cursor "View" bubble         │
 ├─────────────────────────────────────────────────────────────────────────┤
+│ 03 THE SALON  48 framed originals photographed as they hang, led by     │
+│               an installation shot of the collection in situ            │
+├─────────────────────────────────────────────────────────────────────────┤
 │ QUOTE         Full-bleed band over a darkened painting                  │
 ├─────────────────────────────────────────────────────────────────────────┤
-│ 03 THE GALLERY  Founder & director, mission, socials                    │
+│ 04 THE GALLERY  Founder & director, mission, socials                    │
 ├─────────────────────────────────────────────────────────────────────────┤
-│ 04 INQUIRE    "Bring a piece home." → Instagram DM                      │
+│ 05 INQUIRE    "Bring a piece home." → Instagram DM                      │
 └─────────────────────────────────────────────────────────────────────────┘
 │ LIGHTBOX      Any artwork → full-screen viewer: arrows, keyboard,       │
 │               swipe, piece counter, per-piece inquiry link              │
@@ -97,7 +100,7 @@ Or just open `index.html` in a browser.
 
 ### `/// EDIT THE COLLECTION`
 
-Every artwork lives in one array at the top of [`app.js`](app.js):
+Every artwork lives in the `WORKS` (collection) and `SALON` (framed works) arrays at the top of [`app.js`](app.js):
 
 ```js
 { slug: "meadow", title: "Meadow Song", medium: "Acrylic on canvas",
