@@ -11,6 +11,7 @@
   <meta property="og:site_name" content="Dr. Caryn McAllister Gallery">
   <meta property="og:title" content="Dr. Caryn McAllister Gallery — Original Watercolors &amp; Mixed Media">
   <meta property="og:description" content="Beauty, color &amp; joy — for all. Original works curated in the hope of greater access to healthcare.">
+  <link rel="canonical" href="https://mcallister-gallery.vercel.app/">
   <meta property="og:url" content="https://mcallister-gallery.vercel.app/">
   <meta property="og:image" content="https://mcallister-gallery.vercel.app/assets/og.jpg">
   <meta property="og:image:width" content="1200">
@@ -43,7 +44,7 @@
     <nav aria-label="Primary">
       <a href="#works">Collection</a>
       <a href="#salon">Salon</a>
-      <a href="#gallery">The&nbsp;Gallery</a>
+      <a href="#gallery">About</a>
       <a href="#inquire">Inquire</a>
     </nav>
   </header>
@@ -89,7 +90,13 @@
     <section id="featured" class="featured">
       <div class="section-head reveal">
         <h2><span class="num">01</span> On View</h2>
-        <p class="section-note">Highlights from the current collection — drag to explore.</p>
+        <div class="feat-head-right">
+          <p class="section-note">Highlights from the current collection</p>
+          <div class="feat-arrows">
+            <button class="fa-prev" aria-label="Previous highlights">&larr;</button>
+            <button class="fa-next" aria-label="Next highlights">&rarr;</button>
+          </div>
+        </div>
       </div>
       <div class="feat-track" id="feat-track">
         <!-- cards injected by app.js -->
@@ -189,6 +196,8 @@
     </nav>
     <p class="foot-note">Original watercolors &amp; mixed media · All images © 2026 Dr. Caryn McAllister Gallery.</p>
   </footer>
+
+  <button id="to-top" aria-label="Back to top">&uarr;</button>
 
   <!-- ============ LIGHTBOX ============ -->
   <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Artwork viewer" hidden>

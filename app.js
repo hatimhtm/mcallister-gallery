@@ -37,8 +37,8 @@ const SALON = [
   { slug: "salon-in-situ", title: "The Salon, in situ", medium: "The collection installed", size: "Connecticut", w: 1200, h: 1600, cat: "salon", wash: "#8a8378" },
   { slug: "salon-02", title: "Horizon in Red", medium: "Watercolor", size: "Framed", w: 1600, h: 1385, cat: "salon", wash: "#855e57" },
   { slug: "salon-03", title: "Lotus", medium: "Watercolor", size: "Framed", w: 1600, h: 1050, cat: "salon", wash: "#877e6c" },
-  { slug: "salon-04", title: "Storm Light", medium: "Watercolor", size: "Framed", w: 1600, h: 1200, cat: "salon", wash: "#797567" },
-  { slug: "salon-05", title: "Silver Bloom", medium: "Watercolor & ink", size: "Framed", w: 1600, h: 1200, cat: "salon", wash: "#94896f" },
+  { slug: "salon-04", title: "Storm Light", medium: "Watercolor", size: "Framed", w: 1600, h: 1139, cat: "salon", wash: "#70746c" },
+  { slug: "salon-05", title: "Silver Bloom", medium: "Watercolor & ink", size: "Framed", w: 1600, h: 1158, cat: "salon", wash: "#918a6b" },
   { slug: "salon-06", title: "Cove", medium: "Watercolor", size: "Framed", w: 1200, h: 1600, cat: "salon", wash: "#887d69" },
   { slug: "salon-07", title: "Carnations", medium: "Watercolor", size: "Framed", w: 1200, h: 1600, cat: "salon", wash: "#a29282" },
   { slug: "salon-08", title: "Ember Shore", medium: "Acrylic", size: "", w: 1054, h: 1600, cat: "salon", wash: "#5b6a7b" },
@@ -218,7 +218,11 @@ if (playIntro) {
   };
 
   const qaOffset = +(new URLSearchParams(location.search).get("it") || 0); // QA: render the timeline at +N ms
-  let t0 = null, bgAt = null;
+  let t0 = null, bgAt = null, skipAt = null;
+  const skipCtl = new AbortController();
+  const requestSkip = () => { if (skipAt === null) skipAt = performance.now(); };
+  ["pointerdown", "keydown", "wheel", "touchstart"].forEach((ev) =>
+    addEventListener(ev, requestSkip, { signal: skipCtl.signal, passive: true }));
   const frame = (now) => {
     if (t0 === null) t0 = now - qaOffset;
     const t = now - t0;
@@ -254,6 +258,7 @@ if (playIntro) {
       ctx.restore();
     });
 
+    if (skipAt !== null && t < INTRO_END) t0 = now - INTRO_END;  // any input fast-forwards to the fade
     if (t < INTRO_END) requestAnimationFrame(frame);
     else {
       // soft landing: fade out whatever slivers of curtain remain, then unmount
@@ -261,6 +266,7 @@ if (playIntro) {
       setTimeout(() => {
         document.body.classList.remove("intro-on", "intro-fade");
         removeEventListener("resize", resize);
+        skipCtl.abort();
         canvas.width = canvas.height = 0;   // release the backing store (~20MB at 2x DPR)
       }, 420);
     }
@@ -323,12 +329,13 @@ SALON.forEach((w, i) => {
   fig.tabIndex = 0;
   fig.setAttribute("role", "button");
   fig.setAttribute("aria-label", `${w.title}, ${w.medium}. Open viewer.`);
+  const isSitu = w.slug === "salon-in-situ";
   fig.innerHTML = `
     <div class="work-frame" style="--wash:${w.wash}">
       <img src="assets/art/${w.slug}.jpg"${srcsetFor(w, GRID_SIZES)} alt="${w.title} — ${w.medium}" width="${w.w}" height="${w.h}" loading="lazy">
     </div>
     <figcaption class="work-caption">
-      <span class="t"><span class="idx">${String(i + 1).padStart(2, "0")}</span><a href="work/${w.slug}.html">${w.title}</a></span>
+      <span class="t">${isSitu ? "" : `<span class="idx">${String(i).padStart(2, "0")}</span>`}${isSitu ? w.title : `<a href="work/${w.slug}.html">${w.title}</a>`}</span>
       <span class="m">${detailOf(w)}</span>
     </figcaption>`;
   salonGrid.appendChild(fig);
@@ -336,12 +343,12 @@ SALON.forEach((w, i) => {
 salonGrid.addEventListener("click", (e) => {
   if (e.target.closest("a")) return;              // caption link → its page
   const work = e.target.closest(".work");
-  if (work) openLb(+work.dataset.index);
+  if (work) openLb(+work.dataset.index, salonGrid);
 });
 salonGrid.addEventListener("keydown", (e) => {
   if ((e.key === "Enter" || e.key === " ") && e.target.closest(".work")) {
     e.preventDefault();
-    openLb(+e.target.closest(".work").dataset.index);
+    openLb(+e.target.closest(".work").dataset.index, salonGrid);
   }
 });
 
@@ -386,6 +393,22 @@ track.addEventListener("keydown", (e) => {
     openLb(+e.target.closest(".feat-card").dataset.index);
   }
 });
+
+/* ---------- featured rail arrows ---------- */
+const stepTrack = (d) => {
+  const card = track.querySelector(".feat-card");
+  const dx = card ? card.getBoundingClientRect().width + 24 : 400;
+  track.scrollBy({ left: d * dx, behavior: REDUCED ? "auto" : "smooth" });
+};
+document.querySelector(".fa-prev")?.addEventListener("click", () => stepTrack(-1));
+document.querySelector(".fa-next")?.addEventListener("click", () => stepTrack(1));
+
+/* ---------- back to top ---------- */
+const toTop = document.getElementById("to-top");
+addEventListener("scroll", () => {
+  toTop.classList.toggle("show", scrollY > innerHeight * 2);
+}, { passive: true });
+toTop.addEventListener("click", () => scrollTo({ top: 0, behavior: REDUCED ? "auto" : "smooth" }));
 
 /* ---------- filters ---------- */
 const filterBtns = document.querySelectorAll(".filter");
@@ -443,6 +466,7 @@ if (matchMedia("(hover: hover) and (pointer: fine)").matches && !matchMedia("(pr
 /* ---------- cursor "view" bubble ---------- */
 const bubble = document.getElementById("cursor-view");
 if (matchMedia("(hover: hover) and (pointer: fine)").matches && !REDUCED) {
+  document.body.classList.add("bubble-on");
   let x = 0, y = 0, bx = 0, by = 0, scale = 0, target = 0, raf = null;
   const label = bubble.querySelector("span");
   const loop = () => {
@@ -477,11 +501,12 @@ let visible = [];
 let hideTimer = null;
 let lastFocus = null;
 
-function openLb(index) {
+function openLb(index, scopeEl) {
   clearTimeout(hideTimer);                     // a close may still be pending — cancel it
-  visible = [...document.querySelectorAll(".work:not(.is-hidden)")].map((el) => +el.dataset.index);
-  if (!visible.includes(index)) visible = ALLWORKS.map((_, i) => i);  // e.g. featured card outside the active filter
-  current = visible.indexOf(index);
+  const scope = scopeEl || document;           // featured rail and ?lb hook browse everything
+  visible = [...scope.querySelectorAll(".work:not(.is-hidden)")].map((el) => +el.dataset.index);
+  if (!visible.includes(index)) visible = ALLWORKS.map((_, i) => i);
+  current = Math.max(0, visible.indexOf(index));  // clamp: an out-of-range ?lb=N must not throw
   renderLb();
   lastFocus = document.activeElement;
   lb.hidden = false;
@@ -492,7 +517,10 @@ function openLb(index) {
 }
 function renderLb() {
   const w = ALLWORKS[visible[current]];
+  lbImg.style.opacity = "0.3";
+  lbImg.onload = () => { lbImg.style.opacity = "1"; };
   lbImg.src = `assets/art/${w.slug}.jpg`;
+  if (lbImg.complete && lbImg.naturalWidth) lbImg.style.opacity = "1";
   lbImg.alt = `${w.title} — ${w.medium}`;
   lbTitle.textContent = w.title;
   lbMedium.textContent = detailOf(w);
@@ -513,12 +541,12 @@ const step = (d) => { current = (current + d + visible.length) % visible.length;
 grid.addEventListener("click", (e) => {
   if (e.target.closest("a")) return;              // caption link → its page
   const work = e.target.closest(".work");
-  if (work) openLb(+work.dataset.index);
+  if (work) openLb(+work.dataset.index, grid);
 });
 grid.addEventListener("keydown", (e) => {
   if ((e.key === "Enter" || e.key === " ") && e.target.closest(".work")) {
     e.preventDefault();
-    openLb(+e.target.closest(".work").dataset.index);
+    openLb(+e.target.closest(".work").dataset.index, grid);
   }
 });
 lb.querySelector(".lb-close").addEventListener("click", closeLb);

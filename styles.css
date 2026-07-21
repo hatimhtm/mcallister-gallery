@@ -445,6 +445,20 @@ section { position: relative; }
   white-space: nowrap;
 }
 
+.feat-head-right { display: flex; align-items: baseline; gap: 1.4rem; }
+.feat-arrows { display: flex; gap: 0.5rem; }
+.fa-prev, .fa-next {
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  width: 2.6rem; height: 2.6rem;
+  font-size: 1rem;
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color 0.3s, background 0.3s;
+}
+.fa-prev:hover, .fa-next:hover { border-color: var(--ink); }
+
 /* --- works grid --------------------------------------------------- */
 .works { padding: clamp(4rem, 9vh, 7rem) var(--pad-x); }
 
@@ -483,8 +497,9 @@ section { position: relative; }
 .work {
   break-inside: avoid;
   margin-bottom: clamp(2.2rem, 4vw, 3.6rem);
-  cursor: none;
 }
+body.bubble-on .work { cursor: none; }
+body.bubble-on .work .work-caption { cursor: auto; }
 @media (hover: none) { .work { cursor: pointer; } }
 .work.is-hidden { display: none; }
 .work-frame {
@@ -602,8 +617,14 @@ section { position: relative; }
 }
 
 /* crawlable caption links in the grids */
-.work-caption .t a { color: inherit; text-decoration: none; }
-.work-caption .t a:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.work-caption .t a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: rgba(28, 26, 23, 0.28);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.work-caption .t a:hover { text-decoration-color: var(--ink); }
 
 /* --- quote band --------------------------------------------------- */
 .quote-band {
@@ -745,7 +766,7 @@ footer {
   left: 50%; top: 50%;
   width: 100px; height: 100px;
   margin: -50px 0 0 -50px;
-  background: rgba(16, 15, 13, 0.97);
+  background: #100f0d;
   clip-path: path("M71.9 49.1C71.6 52.6 69.1 58.0 67.2 61.9C65.2 65.8 63.0 70.0 60.0 72.4C57.0 74.8 53.1 76.6 49.0 76.3C45.0 76.1 38.7 74.0 35.6 70.9C32.5 67.9 32.9 62.8 30.4 58.0C28.0 53.2 20.2 46.0 20.7 42.0C21.3 38.0 29.3 38.1 33.6 34.2C37.9 30.3 41.9 19.5 46.4 18.4C51.0 17.2 57.1 23.7 60.8 27.5C64.5 31.3 66.6 37.3 68.5 40.9C70.3 44.5 72.1 45.6 71.9 49.1ZM41.2 84.6m-1.5 0a1.5 1.5 0 1 0 2.9 0a1.5 1.5 0 1 0 -2.9 0ZM33.8 92.0m-1.6 0a1.6 1.6 0 1 0 3.1 0a1.6 1.6 0 1 0 -3.1 0ZM12.9 29.1m-1.9 0a1.9 1.9 0 1 0 3.8 0a1.9 1.9 0 1 0 -3.8 0ZM16.9 39.8m-1.4 0a1.4 1.4 0 1 0 2.7 0a1.4 1.4 0 1 0 -2.7 0Z");
   transform: scale(0);
   transition: transform 0.55s cubic-bezier(0.3, 0.6, 0.3, 1);
@@ -768,6 +789,7 @@ footer {
   display: flex; flex-direction: column;
 }
 .lb-stage img {
+  transition: opacity 0.25s ease;
   max-width: 100%;
   max-height: calc(88vh - 7rem);
   object-fit: contain;
@@ -824,6 +846,29 @@ footer {
   will-change: transform;
 }
 @media (hover: none) { #cursor-view { display: none; } }
+
+/* --- back to top --------------------------------------------------- */
+#to-top {
+  position: fixed;
+  right: clamp(1rem, 3vw, 2rem);
+  bottom: clamp(1rem, 3vw, 2rem);
+  z-index: 300;
+  width: 3rem; height: 3rem;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--paper) 92%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--ink);
+  font-size: 1.05rem;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity 0.35s ease, transform 0.35s var(--ease), border-color 0.3s;
+}
+#to-top.show { opacity: 1; pointer-events: auto; transform: none; }
+#to-top:hover { border-color: var(--ink); }
 
 /* --- reveal animations -------------------------------------------- */
 .reveal {
