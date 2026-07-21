@@ -34,7 +34,7 @@ assert len(works) == 22, f"expected 22 collection works, got {len(works)}"
 assert len(salon) == 48, f"expected 48 salon works, got {len(salon)}"
 
 CAT_LABEL = {"florals": "Florals", "landscapes": "Land & Sea",
-             "menagerie": "Menagerie", "abstracts": "Abstract", "salon": "Framed original"}
+             "menagerie": "Menagerie", "abstracts": "Abstract", "salon": "The Salon"}
 
 TEMPLATE = open(os.path.join(ROOT, "work-template.html")).read()
 
@@ -74,7 +74,7 @@ for i, w in enumerate(all_works):
             .replace("{{TITLE}}", esc_t)
             .replace("{{DETAIL}}", html.escape(detail))
             .replace("{{MEDIUM}}", html.escape(w["medium"]))
-            .replace("{{PRESENTATION}}", html.escape(w["size"]) if w["size"] else "Unframed — details on request")
+            .replace("{{PRESENTATION}}", html.escape(w["size"]) if w["size"] else "Details on request")
             .replace("{{COLLECTION}}", w["coll"])
             .replace("{{COLL_ANCHOR}}", "salon" if w["coll"] == "The Salon" else "works")
             .replace("{{CATEGORY}}", CAT_LABEL.get(w["cat"], w["cat"]))

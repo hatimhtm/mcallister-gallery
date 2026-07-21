@@ -39,8 +39,8 @@
 │               (Florals · Land & Sea · Menagerie · Abstract),            │
 │               numbered catalogue captions, cursor "View" bubble         │
 ├─────────────────────────────────────────────────────────────────────────┤
-│ 03 THE SALON  48 framed originals photographed as they hang, led by     │
-│               an installation shot of the collection in situ            │
+│ 03 THE SALON  48 further works, machine-cropped from framed wall        │
+│               photographs down to the paintings themselves              │
 ├─────────────────────────────────────────────────────────────────────────┤
 │ QUOTE         Full-bleed band over a darkened painting                  │
 ├─────────────────────────────────────────────────────────────────────────┤
@@ -72,7 +72,8 @@ MOTION        Ink-splatter track-matte intro on a 2D canvas: the blur is
 MOBILE        Not a squeezed desktop: full-width CTAs, swipe rails,
               horizontal filter chips, thumb-pill lightbox arrows.
 
-IMAGES        Every photographed frame was cropped to the artwork;
+IMAGES        Every photograph was cropped to the painting itself
+              (two-stage edge detection: frame-on-wall, then art-in-frame);
               real lazy-loading with intrinsic sizes (no layout shift),
               responsive srcset (800px variants for grid rendering,
               full resolution reserved for the lightbox), watercolor
