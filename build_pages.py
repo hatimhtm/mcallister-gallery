@@ -54,8 +54,8 @@ def nav_card(w, label):
 for i, w in enumerate(all_works):
     prev_w = all_works[(i - 1) % len(all_works)]
     next_w = all_works[(i + 1) % len(all_works)]
-    # salon grid numbering includes the in-situ lead tile as No. 01, so pages offset by +2
-    number = f"No. {i + 1:02d}" if w["coll"] == "The Collection" else f"No. {i - len(works) + 2:02d}"
+    # salon pages numbered 01-48, matching the grid
+    number = f"No. {i + 1:02d}" if w["coll"] == "The Collection" else f"No. {i - len(works) + 1:02d}"
     detail = " · ".join(x for x in [w["medium"], w["size"]] if x)
     esc_t = html.escape(w["title"])
     jsonld = f'''{{

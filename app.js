@@ -31,10 +31,8 @@ const WORKS = [
 const FEATURED = ["meadow", "the-muse", "autumn-fire", "prima", "mirror-lake", "marigold"];
 
 /* The Salon: framed originals, photographed ready to hang. Rendered in
-   their frames — the frame is part of the object. First entry is the
-   installation photograph that opens the section. */
+   their frames — the frame is part of the object. */
 const SALON = [
-  { slug: "salon-in-situ", title: "The Salon, in situ", medium: "The collection installed", size: "Connecticut", w: 1200, h: 1600, cat: "salon", wash: "#8a8378" },
   { slug: "salon-02", title: "Horizon in Red", medium: "Watercolor", size: "Framed", w: 1600, h: 1385, cat: "salon", wash: "#855e57" },
   { slug: "salon-03", title: "Lotus", medium: "Watercolor", size: "Framed", w: 1600, h: 1050, cat: "salon", wash: "#877e6c" },
   { slug: "salon-04", title: "Storm Light", medium: "Watercolor", size: "Framed", w: 1600, h: 1139, cat: "salon", wash: "#70746c" },
@@ -324,18 +322,17 @@ const salonGrid = document.getElementById("salon-grid");
 SALON.forEach((w, i) => {
   const idx = WORKS.length + i;
   const fig = document.createElement("figure");
-  fig.className = "work reveal" + (w.slug === "salon-in-situ" ? " salon-lead" : "");
+  fig.className = "work reveal";
   fig.dataset.index = idx;
   fig.tabIndex = 0;
   fig.setAttribute("role", "button");
   fig.setAttribute("aria-label", `${w.title}, ${w.medium}. Open viewer.`);
-  const isSitu = w.slug === "salon-in-situ";
   fig.innerHTML = `
     <div class="work-frame" style="--wash:${w.wash}">
       <img src="assets/art/${w.slug}.jpg"${srcsetFor(w, GRID_SIZES)} alt="${w.title} — ${w.medium}" width="${w.w}" height="${w.h}" loading="lazy">
     </div>
     <figcaption class="work-caption">
-      <span class="t">${isSitu ? "" : `<span class="idx">${String(i).padStart(2, "0")}</span>`}${isSitu ? w.title : `<a href="work/${w.slug}.html">${w.title}</a>`}</span>
+      <span class="t"><span class="idx">${String(i + 1).padStart(2, "0")}</span><a href="work/${w.slug}.html">${w.title}</a></span>
       <span class="m">${detailOf(w)}</span>
     </figcaption>`;
   salonGrid.appendChild(fig);
@@ -526,7 +523,6 @@ function renderLb() {
   lbMedium.textContent = detailOf(w);
   lbCount.textContent = `${String(current + 1).padStart(2, "0")} / ${String(visible.length).padStart(2, "0")}`;
   const page = document.getElementById("lb-page");
-  page.style.display = w.slug === "salon-in-situ" ? "none" : "";
   page.href = `work/${w.slug}.html`;
 }
 function closeLb() {
