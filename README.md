@@ -46,7 +46,7 @@
 ├─────────────────────────────────────────────────────────────────────────┤
 │ 04 THE GALLERY  Founder & director, mission, socials                    │
 ├─────────────────────────────────────────────────────────────────────────┤
-│ 05 INQUIRE    "Bring a piece home." → Instagram DM                      │
+│ 05 CONNECT    "Come closer." → message the gallery on Instagram         │
 └─────────────────────────────────────────────────────────────────────────┘
 │ LIGHTBOX      Any artwork → full-screen viewer: arrows, keyboard,       │
 │               swipe, piece counter, per-piece inquiry link              │
