@@ -11,7 +11,7 @@ BASE = "https://mcallister-gallery.vercel.app"   # update if the deploy domain c
 ROOT = os.path.dirname(os.path.abspath(__file__))
 
 entry_re = re.compile(
-    r'\{\s*slug:\s*"(?P<slug>[\w-]+)",\s*title:\s*"(?P<title>[^"]+)"\s*,\s*medium:\s*"(?P<medium>[^"]+)"\s*,\s*'
+    r'\{\s*slug:\s*"(?P<slug>[\w-]+)",\s*(?:f:\s*"(?P<f>[\w-]+)",\s*)?title:\s*"(?P<title>[^"]+)"\s*,\s*medium:\s*"(?P<medium>[^"]+)"\s*,\s*'
     r'size:\s*"(?P<size>[^"]*)"\s*,\s*w:\s*(?P<w>\d+)\s*,\s*h:\s*(?P<h>\d+)\s*,\s*cat:\s*"(?P<cat>\w+)"\s*,\s*wash:\s*"(?P<wash>#[0-9a-fA-F]{6})"')
 
 js = open(os.path.join(ROOT, "app.js")).read()
@@ -22,6 +22,7 @@ def parse(src, coll):
     out = []
     for m in entry_re.finditer(src):
         d = m.groupdict()
+        d["f"] = d["f"] or d["slug"]
         d["w"], d["h"] = int(d["w"]), int(d["h"])
         d["coll"] = coll
         out.append(d)
@@ -48,7 +49,7 @@ def srcset(w):
 
 def nav_card(w, label):
     return (f'<a class="wp-adj" href="/work/{w["slug"]}.html">'
-            f'<img src="/assets/art/{w["slug"] if w["w"] <= 900 else w["slug"] + "-800"}.jpg" alt="" width="{w["w"]}" height="{w["h"]}" loading="lazy">'
+            f'<img src="/assets/art/{w["f"] if w["w"] <= 900 else w["f"] + "-800"}.jpg" alt="" width="{w["w"]}" height="{w["h"]}" loading="lazy">'
             f'<span><small>{label}</small><em>{html.escape(w["title"])}</em></span></a>')
 
 for i, w in enumerate(all_works):
@@ -65,7 +66,7 @@ for i, w in enumerate(all_works):
     "artMedium": "{html.escape(w["medium"])}",
     "artform": "Painting",
     "width": "{w["w"]} px (digital image)",
-    "image": "{BASE}/assets/art/{w["slug"]}.jpg",
+    "image": "{BASE}/assets/art/{w["f"]}.jpg",
     "url": "{BASE}/work/{w["slug"]}.html",
     "isPartOf": {{ "@type": "CollectionPage", "name": "Dr. Caryn McAllister Gallery — {w["coll"]}", "url": "{BASE}/" }},
     "publisher": {{ "@type": "Organization", "name": "Dr. Caryn McAllister Gallery" }}
@@ -80,6 +81,7 @@ for i, w in enumerate(all_works):
             .replace("{{CATEGORY}}", CAT_LABEL.get(w["cat"], w["cat"]))
             .replace("{{NUMBER}}", number)
             .replace("{{SLUG}}", w["slug"])
+            .replace("{{FILE}}", w["f"])
             .replace("{{W}}", str(w["w"]))
             .replace("{{H}}", str(w["h"]))
             .replace("{{WASH}}", w["wash"])

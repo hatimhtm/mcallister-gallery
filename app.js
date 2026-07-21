@@ -32,54 +32,54 @@ const FEATURED = ["meadow", "the-muse", "autumn-fire", "prima", "mirror-lake", "
 
 /* The Salon: the second collection of original works. */
 const SALON = [
-  { slug: "salon-02", title: "Horizon in Red", medium: "Watercolor", size: "", w: 1600, h: 1571, cat: "salon", wash: "#7f6881" },
-  { slug: "salon-03", title: "Lotus", medium: "Watercolor", size: "", w: 1600, h: 1102, cat: "salon", wash: "#706755" },
-  { slug: "salon-04", title: "Storm Light", medium: "Watercolor", size: "", w: 1600, h: 1278, cat: "salon", wash: "#5d6d6e" },
-  { slug: "salon-05", title: "Silver Bloom", medium: "Watercolor & ink", size: "", w: 1600, h: 1340, cat: "salon", wash: "#918e6b" },
-  { slug: "salon-06", title: "Cove", medium: "Watercolor", size: "", w: 1021, h: 1600, cat: "salon", wash: "#8d9892" },
-  { slug: "salon-07", title: "Carnations", medium: "Watercolor", size: "", w: 882, h: 1600, cat: "salon", wash: "#b0a79c" },
-  { slug: "salon-08", title: "Ember Shore", medium: "Acrylic", size: "", w: 1600, h: 874, cat: "salon", wash: "#364678" },
-  { slug: "salon-09", title: "Undertow", medium: "Mixed media", size: "", w: 1600, h: 1598, cat: "salon", wash: "#777f80" },
-  { slug: "salon-10", title: "Cocktail Hour", medium: "Watercolor & ink", size: "Suite of eight", w: 1600, h: 1418, cat: "salon", wash: "#a09c8e" },
-  { slug: "salon-11", title: "Snow Field", medium: "Mixed media", size: "", w: 1432, h: 1600, cat: "salon", wash: "#92928d" },
-  { slug: "salon-12", title: "Plume", medium: "Mixed media", size: "", w: 1600, h: 1199, cat: "salon", wash: "#9b9689" },
-  { slug: "salon-13", title: "Dogwood Nights", medium: "Watercolor & ink", size: "", w: 1600, h: 1121, cat: "salon", wash: "#978583" },
-  { slug: "salon-14", title: "Wild Bouquet", medium: "Watercolor & ink", size: "", w: 1221, h: 1600, cat: "salon", wash: "#a5998b" },
-  { slug: "salon-15", title: "Tulip", medium: "Watercolor", size: "", w: 1060, h: 1600, cat: "salon", wash: "#ad7b7b" },
-  { slug: "salon-16", title: "Corps de Ballet", medium: "Acrylic on canvas", size: "", w: 1200, h: 1600, cat: "salon", wash: "#988d7e" },
-  { slug: "salon-17", title: "Island Walk", medium: "Watercolor", size: "", w: 1499, h: 1600, cat: "salon", wash: "#7b7e5c" },
-  { slug: "salon-18", title: "Garden Suite", medium: "Watercolor & ink", size: "Suite of nine", w: 1474, h: 1600, cat: "salon", wash: "#988d75" },
-  { slug: "salon-19", title: "Night Sail", medium: "Mixed media", size: "", w: 1600, h: 1209, cat: "salon", wash: "#75787c" },
-  { slug: "salon-20", title: "The Sage", medium: "Ink & wash", size: "", w: 1117, h: 1600, cat: "salon", wash: "#968975" },
-  { slug: "salon-21", title: "Five Hares", medium: "Watercolor", size: "Suite of five", w: 1600, h: 574, cat: "salon", wash: "#928a7d" },
-  { slug: "salon-22", title: "Sunset Regatta", medium: "Watercolor", size: "", w: 1547, h: 1600, cat: "salon", wash: "#9d8a75" },
-  { slug: "salon-23", title: "Composition in Silver", medium: "Mixed media", size: "", w: 1472, h: 1600, cat: "salon", wash: "#97896d" },
-  { slug: "salon-24", title: "House in the Mist", medium: "Watercolor", size: "", w: 1354, h: 1600, cat: "salon", wash: "#818668" },
-  { slug: "salon-25", title: "Scarlet Dahlia", medium: "Watercolor", size: "", w: 1600, h: 1578, cat: "salon", wash: "#7d6b62" },
-  { slug: "salon-26", title: "Firebird Garden", medium: "Mixed media", size: "", w: 1293, h: 1600, cat: "salon", wash: "#84665c" },
-  { slug: "salon-27", title: "Butterfly in Plum", medium: "Watercolor & ink", size: "", w: 726, h: 1600, cat: "salon", wash: "#a38f89" },
-  { slug: "salon-28", title: "Blue Bunny", medium: "Acrylic on canvas", size: "", w: 1600, h: 1533, cat: "salon", wash: "#4c7676" },
-  { slug: "salon-29", title: "Midnight Hare", medium: "Acrylic", size: "", w: 1201, h: 1600, cat: "salon", wash: "#57574b" },
-  { slug: "salon-30", title: "Serenade", medium: "Watercolor", size: "", w: 1412, h: 1600, cat: "salon", wash: "#99764d" },
-  { slug: "salon-31", title: "Beneath the Palm", medium: "Watercolor", size: "", w: 1400, h: 1600, cat: "salon", wash: "#6f765c" },
-  { slug: "salon-32", title: "Waterfall", medium: "Mixed media", size: "", w: 1196, h: 1600, cat: "salon", wash: "#596648" },
-  { slug: "salon-33", title: "Riverbank Poppies", medium: "Watercolor", size: "", w: 1379, h: 1600, cat: "salon", wash: "#aaac9d" },
-  { slug: "salon-34", title: "Honeybee", medium: "Watercolor & ink", size: "", w: 1600, h: 955, cat: "salon", wash: "#908a83" },
-  { slug: "salon-35", title: "Marsh Heron", medium: "Mixed media", size: "", w: 1275, h: 1600, cat: "salon", wash: "#7b735b" },
-  { slug: "salon-36", title: "Lake in the Mountains", medium: "Watercolor", size: "", w: 1270, h: 1600, cat: "salon", wash: "#707262" },
-  { slug: "salon-37", title: "Garden Cat", medium: "Watercolor", size: "", w: 1252, h: 1600, cat: "salon", wash: "#796d54" },
-  { slug: "salon-38", title: "Cherry Tree", medium: "Watercolor", size: "", w: 1577, h: 1600, cat: "salon", wash: "#b0a18a" },
-  { slug: "salon-39", title: "Poppies at Noon", medium: "Watercolor", size: "", w: 1600, h: 1230, cat: "salon", wash: "#b9bdae" },
-  { slug: "salon-40", title: "Quiet Marsh", medium: "Mixed media", size: "", w: 887, h: 1600, cat: "salon", wash: "#7b735c" },
-  { slug: "salon-41", title: "The Garden Gate", medium: "Watercolor & ink", size: "", w: 1274, h: 1600, cat: "salon", wash: "#6c6c5d" },
-  { slug: "salon-42", title: "Nocturne", medium: "Mixed media", size: "", w: 1200, h: 1600, cat: "salon", wash: "#8d877d" },
-  { slug: "salon-43", title: "Little Scruff", medium: "Acrylic", size: "", w: 1600, h: 1548, cat: "salon", wash: "#646059" },
-  { slug: "salon-44", title: "Sweethearts by the Sea", medium: "Acrylic on canvas", size: "", w: 1093, h: 1600, cat: "salon", wash: "#96938c" },
-  { slug: "salon-46", title: "Two Trees", medium: "Watercolor", size: "", w: 1600, h: 1339, cat: "salon", wash: "#74773f" },
-  { slug: "salon-47", title: "Red Mesa", medium: "Watercolor", size: "", w: 1600, h: 812, cat: "salon", wash: "#695c36" },
-  { slug: "salon-48", title: "Evening Dogwood", medium: "Watercolor", size: "", w: 1600, h: 984, cat: "salon", wash: "#75664e" },
-  { slug: "salon-49", title: "Daydreamer", medium: "Mixed media", size: "", w: 1096, h: 1600, cat: "salon", wash: "#928471" },
-  { slug: "salon-50", title: "Safe Harbor", medium: "Watercolor", size: "", w: 1600, h: 889, cat: "salon", wash: "#9e9a9e" },
+  { slug: "salon-02", f: "salon-02-v2", title: "Horizon in Red", medium: "Watercolor", size: "", w: 1555, h: 1540, cat: "salon", wash: "#7c6781" },
+  { slug: "salon-03", f: "salon-03-v2", title: "Lotus", medium: "Watercolor", size: "", w: 1536, h: 1002, cat: "salon", wash: "#6d6351" },
+  { slug: "salon-04", f: "salon-04-v2", title: "Storm Light", medium: "Watercolor", size: "", w: 1552, h: 1259, cat: "salon", wash: "#5b6c6e" },
+  { slug: "salon-05", f: "salon-05-v2", title: "Silver Bloom", medium: "Watercolor & ink", size: "", w: 1480, h: 1313, cat: "salon", wash: "#918f6b" },
+  { slug: "salon-06", f: "salon-06-v2", title: "Cove", medium: "Watercolor", size: "", w: 1005, h: 1552, cat: "salon", wash: "#8b9792" },
+  { slug: "salon-07", f: "salon-07-v2", title: "Carnations", medium: "Watercolor", size: "", w: 847, h: 1472, cat: "salon", wash: "#aea49a" },
+  { slug: "salon-08", f: "salon-08-v2", title: "Ember Shore", medium: "Acrylic", size: "", w: 1600, h: 874, cat: "salon", wash: "#364678" },
+  { slug: "salon-09", f: "salon-09-v2", title: "Undertow", medium: "Mixed media", size: "", w: 1544, h: 1551, cat: "salon", wash: "#767f81" },
+  { slug: "salon-10", f: "salon-10-v2", title: "Cocktail Hour", medium: "Watercolor & ink", size: "Suite of eight", w: 1552, h: 1340, cat: "salon", wash: "#a5a193" },
+  { slug: "salon-11", f: "salon-11-v2", title: "Snow Field", medium: "Mixed media", size: "", w: 1374, h: 1552, cat: "salon", wash: "#969690" },
+  { slug: "salon-12", f: "salon-12-v2", title: "Plume", medium: "Mixed media", size: "", w: 1576, h: 1170, cat: "salon", wash: "#9d988a" },
+  { slug: "salon-13", f: "salon-13-v2", title: "Dogwood Nights", medium: "Watercolor & ink", size: "", w: 1496, h: 1076, cat: "salon", wash: "#958180" },
+  { slug: "salon-14", f: "salon-14-v2", title: "Wild Bouquet", medium: "Watercolor & ink", size: "", w: 1190, h: 1528, cat: "salon", wash: "#a5998a" },
+  { slug: "salon-15", f: "salon-15-v2", title: "Tulip", medium: "Watercolor", size: "", w: 1039, h: 1488, cat: "salon", wash: "#ab7475" },
+  { slug: "salon-16", f: "salon-16-v2", title: "Corps de Ballet", medium: "Acrylic on canvas", size: "", w: 990, h: 920, cat: "salon", wash: "#8c7e6d" },
+  { slug: "salon-17", f: "salon-17-v2", title: "Island Walk", medium: "Watercolor", size: "", w: 1462, h: 1576, cat: "salon", wash: "#7a7e5c" },
+  { slug: "salon-18", f: "salon-18-v2", title: "Garden Suite", medium: "Watercolor & ink", size: "Suite of nine", w: 1474, h: 1600, cat: "salon", wash: "#988d75" },
+  { slug: "salon-19", f: "salon-19-v2", title: "Night Sail", medium: "Mixed media", size: "", w: 1552, h: 1190, cat: "salon", wash: "#74787c" },
+  { slug: "salon-20", f: "salon-20-v2", title: "The Sage", medium: "Ink & wash", size: "", w: 1117, h: 1600, cat: "salon", wash: "#968975" },
+  { slug: "salon-21", f: "salon-21-v2", title: "Five Hares", medium: "Watercolor", size: "Suite of five", w: 1552, h: 569, cat: "salon", wash: "#91897c" },
+  { slug: "salon-22", f: "salon-22-v2", title: "Sunset Regatta", medium: "Watercolor", size: "", w: 1547, h: 1600, cat: "salon", wash: "#9d8a75" },
+  { slug: "salon-23", f: "salon-23-v2", title: "Composition in Silver", medium: "Mixed media", size: "", w: 1435, h: 1576, cat: "salon", wash: "#98896d" },
+  { slug: "salon-24", f: "salon-24-v2", title: "House in the Mist", medium: "Watercolor", size: "", w: 1287, h: 1576, cat: "salon", wash: "#808668" },
+  { slug: "salon-25", f: "salon-25-v2", title: "Scarlet Dahlia", medium: "Watercolor", size: "", w: 1600, h: 1578, cat: "salon", wash: "#7d6b62" },
+  { slug: "salon-26", f: "salon-26-v2", title: "Firebird Garden", medium: "Mixed media", size: "", w: 1293, h: 1600, cat: "salon", wash: "#84665c" },
+  { slug: "salon-27", f: "salon-27-v2", title: "Butterfly in Plum", medium: "Watercolor & ink", size: "", w: 682, h: 1360, cat: "salon", wash: "#9c8883" },
+  { slug: "salon-28", f: "salon-28-v2", title: "Blue Bunny", medium: "Acrylic on canvas", size: "", w: 1448, h: 1495, cat: "salon", wash: "#447375" },
+  { slug: "salon-29", f: "salon-29-v2", title: "Midnight Hare", medium: "Acrylic", size: "", w: 1152, h: 1544, cat: "salon", wash: "#545449" },
+  { slug: "salon-30", f: "salon-30-v2", title: "Serenade", medium: "Watercolor", size: "", w: 1412, h: 1600, cat: "salon", wash: "#99764d" },
+  { slug: "salon-31", f: "salon-31-v2", title: "Beneath the Palm", medium: "Watercolor", size: "", w: 1309, h: 1504, cat: "salon", wash: "#697257" },
+  { slug: "salon-32", f: "salon-32-v2", title: "Waterfall", medium: "Mixed media", size: "", w: 1137, h: 1552, cat: "salon", wash: "#566445" },
+  { slug: "salon-33", f: "salon-33-v2", title: "Riverbank Poppies", medium: "Watercolor", size: "", w: 1352, h: 1480, cat: "salon", wash: "#b0b1a0" },
+  { slug: "salon-34", f: "salon-34-v2", title: "Honeybee", medium: "Watercolor & ink", size: "", w: 1320, h: 931, cat: "salon", wash: "#8d8985" },
+  { slug: "salon-35", f: "salon-35-v2", title: "Marsh Heron", medium: "Mixed media", size: "", w: 1262, h: 1560, cat: "salon", wash: "#7b725a" },
+  { slug: "salon-36", f: "salon-36-v2", title: "Lake in the Mountains", medium: "Watercolor", size: "", w: 1257, h: 1568, cat: "salon", wash: "#707162" },
+  { slug: "salon-37", f: "salon-37-v2", title: "Garden Cat", medium: "Watercolor", size: "", w: 1189, h: 1584, cat: "salon", wash: "#7b6f55" },
+  { slug: "salon-38", f: "salon-38-v2", title: "Cherry Tree", medium: "Watercolor", size: "", w: 1577, h: 1600, cat: "salon", wash: "#b0a18a" },
+  { slug: "salon-39", f: "salon-39-v2", title: "Poppies at Noon", medium: "Watercolor", size: "", w: 1576, h: 1205, cat: "salon", wash: "#babdaf" },
+  { slug: "salon-40", f: "salon-40-v2", title: "Quiet Marsh", medium: "Mixed media", size: "", w: 834, h: 1440, cat: "salon", wash: "#746c55" },
+  { slug: "salon-41", f: "salon-41-v2", title: "The Garden Gate", medium: "Watercolor & ink", size: "", w: 1274, h: 1600, cat: "salon", wash: "#6c6c5d" },
+  { slug: "salon-42", f: "salon-42-v2", title: "Nocturne", medium: "Mixed media", size: "", w: 996, h: 1012, cat: "salon", wash: "#706d65" },
+  { slug: "salon-43", f: "salon-43-v2", title: "Little Scruff", medium: "Acrylic", size: "", w: 1600, h: 1548, cat: "salon", wash: "#646059" },
+  { slug: "salon-44", f: "salon-44-v2", title: "Sweethearts by the Sea", medium: "Acrylic on canvas", size: "", w: 1093, h: 1600, cat: "salon", wash: "#96938c" },
+  { slug: "salon-46", f: "salon-46-v2", title: "Two Trees", medium: "Watercolor", size: "", w: 1568, h: 1319, cat: "salon", wash: "#73773e" },
+  { slug: "salon-47", f: "salon-47-v2", title: "Red Mesa", medium: "Watercolor", size: "", w: 1568, h: 795, cat: "salon", wash: "#675a34" },
+  { slug: "salon-48", f: "salon-48-v2", title: "Evening Dogwood", medium: "Watercolor", size: "", w: 1520, h: 970, cat: "salon", wash: "#72634a" },
+  { slug: "salon-49", f: "salon-49-v2", title: "Daydreamer", medium: "Mixed media", size: "", w: 1085, h: 1552, cat: "salon", wash: "#918470" },
+  { slug: "salon-50", f: "salon-50-v2", title: "Safe Harbor", medium: "Watercolor", size: "", w: 1600, h: 889, cat: "salon", wash: "#9e9a9e" },
 ];
 
 const ALLWORKS = WORKS.concat(SALON);   /* one shared index space for the lightbox */
@@ -99,9 +99,10 @@ const detailOf = (w) => [w.medium, w.size].filter(Boolean).join(" · ");
 
 /* works wider than 900px have an 800px variant for grid-size rendering;
    the full-resolution file is reserved for the lightbox */
+const fileOf = (w) => w.f || w.slug;
 const srcsetFor = (w, sizes) =>
   w.w > 900
-    ? ` srcset="assets/art/${w.slug}-800.jpg 800w, assets/art/${w.slug}.jpg ${w.w}w" sizes="${sizes}"`
+    ? ` srcset="assets/art/${fileOf(w)}-800.jpg 800w, assets/art/${fileOf(w)}.jpg ${w.w}w" sizes="${sizes}"`
     : "";
 const GRID_SIZES = "(max-width: 599px) 92vw, (max-width: 1100px) 46vw, 30vw";
 const FEAT_SIZES = "(max-width: 880px) 82vw, 560px";
@@ -283,7 +284,7 @@ WORKS.forEach((w, i) => {
   fig.setAttribute("aria-label", `${w.title}, ${w.medium}. Open viewer.`);
   fig.innerHTML = `
     <div class="work-frame" style="--wash:${w.wash}">
-      <img src="assets/art/${w.slug}.jpg"${srcsetFor(w, GRID_SIZES)} alt="${w.title} — ${w.medium}" width="${w.w}" height="${w.h}" loading="lazy">
+      <img src="assets/art/${fileOf(w)}.jpg"${srcsetFor(w, GRID_SIZES)} alt="${w.title} — ${w.medium}" width="${w.w}" height="${w.h}" loading="lazy">
     </div>
     <figcaption class="work-caption">
       <span class="t"><span class="idx">${String(i + 1).padStart(2, "0")}</span><a href="work/${w.slug}.html">${w.title}</a></span>
@@ -307,7 +308,7 @@ FEATURED.forEach((slug, n) => {
   card.innerHTML = `
     <span class="feat-no">${String(n + 1).padStart(2, "0")}</span>
     <div class="feat-img" style="--wash:${w.wash}">
-      <img src="assets/art/${w.slug}.jpg"${srcsetFor(w, FEAT_SIZES)} alt="${w.title} — ${w.medium}" width="${w.w}" height="${w.h}" loading="lazy">
+      <img src="assets/art/${fileOf(w)}.jpg"${srcsetFor(w, FEAT_SIZES)} alt="${w.title} — ${w.medium}" width="${w.w}" height="${w.h}" loading="lazy">
     </div>
     <figcaption class="feat-caption">
       <span class="t">${w.title}</span>
@@ -328,7 +329,7 @@ SALON.forEach((w, i) => {
   fig.setAttribute("aria-label", `${w.title}, ${w.medium}. Open viewer.`);
   fig.innerHTML = `
     <div class="work-frame" style="--wash:${w.wash}">
-      <img src="assets/art/${w.slug}.jpg"${srcsetFor(w, GRID_SIZES)} alt="${w.title} — ${w.medium}" width="${w.w}" height="${w.h}" loading="lazy">
+      <img src="assets/art/${fileOf(w)}.jpg"${srcsetFor(w, GRID_SIZES)} alt="${w.title} — ${w.medium}" width="${w.w}" height="${w.h}" loading="lazy">
     </div>
     <figcaption class="work-caption">
       <span class="t"><span class="idx">${String(i + 1).padStart(2, "0")}</span><a href="work/${w.slug}.html">${w.title}</a></span>
@@ -515,7 +516,7 @@ function renderLb() {
   const w = ALLWORKS[visible[current]];
   lbImg.style.opacity = "0.3";
   lbImg.onload = () => { lbImg.style.opacity = "1"; };
-  lbImg.src = `assets/art/${w.slug}.jpg`;
+  lbImg.src = `assets/art/${fileOf(w)}.jpg`;
   if (lbImg.complete && lbImg.naturalWidth) lbImg.style.opacity = "1";
   lbImg.alt = `${w.title} — ${w.medium}`;
   lbTitle.textContent = w.title;
